@@ -1,4 +1,29 @@
-# Getting Started with Create React App
+# Atlas Frontend
+
+### Quickstart
+
+```sh
+$ git clone git@github.com:digital-futures-academy/atlas-frontend.git && cd atlas-frontend
+$ npm install
+$ npm start
+```
+
+### Tests
+
+```sh
+# to run Cypress browser tests
+$ npx cypress open
+
+# to run Cypress headless browser tests
+$ npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"
+
+# to run component tests
+$ npm test
+```
+
+
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
