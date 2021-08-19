@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Report from './Report'
+import ReportHeader from "./ReportHeader";
 
 class Reports extends Component {
     constructor(props) {
@@ -25,20 +26,10 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <div id="reportTitle">
-                    <h1>{this.state.reports.cohortName} Report</h1>
-                </div>
-                <div>
-                    <h2 id="cohortSize">Cohort Size: {this.state.reports.cohortSize}</h2>
-                </div>
-                <h2>Gender Distribution</h2>
-               <Report name="gender" data={this.state.reports.gender}/>
-
-               <h2>Background Data</h2>
-               <Report name="background" data={this.state.reports.background}/>
-
-               <h2>Student Challenge Completion</h2>
-               <Report name="challenge" data={this.state.reports.challenges}/>
+                <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
+                <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
+                <Report name="background" heading="Background Data" data={this.state.reports.background}/>
+                <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
             </div>
         )
     }
