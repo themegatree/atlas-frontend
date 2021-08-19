@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Reports from './Reports'
-import data from './__mocks__/report-data.js'
+import data from './__mocks__/reports-data.js'
 
 beforeEach(() => {
     global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
@@ -8,7 +8,7 @@ beforeEach(() => {
 
 test('Renders Report Header', async () => {
     render(<Reports />)
-    const headerElement = await screen.findByText(/Cohort 1 Report/i)
+    const headerElement = await screen.findByText(/mse-2106-a Report/i)
     expect(headerElement).toBeInTheDocument();
 })
 
