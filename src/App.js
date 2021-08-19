@@ -1,6 +1,7 @@
 import './App.css';
 import Cohorts from "./components/Cohorts/Cohorts.js"
 import Reports from "./components/Reports/Reports.js"
+import StudentInfo from './components/Students/StudentInfo.js';
 
 import React from "react";
 import {
@@ -34,7 +35,11 @@ function App() {
             <Route path="/students">
               <p>replace me</p>
             </Route>
-            
+            </Switch>
+            <Switch>
+              <Route exact path='/student/:id'>
+                <StudentInfo />
+              </Route>
           </Switch>
         </div>
       </Router>
