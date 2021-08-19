@@ -2,8 +2,9 @@ import React from "react";
 
 const Cohort = (props) => {
   return (
-    <div>
-      Name: {props.cohort.name}
+    <div id= {props.cohort.id}>
+      <p>Name: {props.cohort.name}</p>
+      <p>Start Date: {props.cohort.startDate}</p>
     </div>
   )
 }
