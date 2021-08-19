@@ -1,5 +1,6 @@
 import './App.css';
 import Cohorts from "./components/Cohorts/Cohorts.js"
+import Reports from "./components/Reports/Reports.js"
 
 import React from "react";
 import {
@@ -24,12 +25,16 @@ function App() {
           </ul>
 
           <Switch>
+            <Route path="/cohorts/:cohortId/reports">
+              <Reports />
+            </Route>
             <Route path="/cohorts">
               <Cohorts />
             </Route>
             <Route path="/students">
               <p>replace me</p>
             </Route>
+            
           </Switch>
         </div>
       </Router>
