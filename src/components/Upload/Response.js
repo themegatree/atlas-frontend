@@ -7,8 +7,8 @@ class Response extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.errors.map(error => <p style={{color:this.props.color}}>{error}</p>)}
+            <div id="errors">
+                {this.props.errors.map((error, i) => <p id={`error-${i+1}`} style={{color:this.props.color}}>{error}</p>)}
             </div>
         );
     }

@@ -13,7 +13,7 @@ class Upload extends Component {
 	};
 
 	setTheColor() {
-		if (this.state.errors[0] === 'Updated to database successfully.') {
+		if (this.state.errors[0] === 'Updated the database successfully.') {
 			this.setState({color: 'green'});
 		} else {
 			this.setState({color: 'red'});
@@ -40,7 +40,8 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ errors: data });
+				console.log(data.response)
+				this.setState({ errors: data.response});
 				this.setTheColor();
 			});
 	};
