@@ -23,7 +23,6 @@ test('Renders Cohort List with two elements', async () => {
   ]
   render(<CohortList cohorts={cohorts} />);
 
-
   const cohortFirstNameElement = screen.getAllByText(/Name: MOCK name/i)[0];
   expect(cohortFirstNameElement).toBeInTheDocument();
   const cohortSecondNameElement = screen.getAllByText(/Name: MOCK name 2/i)[0];
