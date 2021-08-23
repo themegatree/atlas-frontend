@@ -1,58 +1,40 @@
-import { render} from '@testing-library/react';
+
+import { render, screen } from '@testing-library/react';
 import CohortList from './CohortList';
-import data, { cohorts } from './mocks/cohort-data.js'
 
-beforeEach(() => {
-  global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
-})
+test('Renders Cohort List with two elements', async () => {
+  const cohorts = [
+    {
+      "id": "1",
+      "name": "MOCK name",
+      "startDate": "MOCK date"
+    },
+        {
+      "id": "2",
+      "name": "MOCK name 2",
+      "startDate": "MOCK date 2`"
+    },
+    {
+      "id": "3",
+      "name": "MOCK name 3",
+      "startDate": "MOCK date 3"
+    },
+    
+  ]
+  render(<CohortList cohorts={cohorts} />);
 
-test('Renders CohortList and test the properties of cohorts list', async () => {
 
-  await render(<CohortList cohorts={cohorts} />);
+  const cohortFirstNameElement = screen.getAllByText(/Name: MOCK name/i)[0];
+  expect(cohortFirstNameElement).toBeInTheDocument();
+  const cohortSecondNameElement = screen.getAllByText(/Name: MOCK name 2/i)[0];
+  expect(cohortSecondNameElement).toBeInTheDocument();
+    const cohortThirdNameElement = screen.getAllByText(/Name: MOCK name 3/i)[0];
+  expect(cohortThirdNameElement).toBeInTheDocument();
 
-  for (let i = 0; i < cohorts.length; i += 1) {
-    expect(cohorts[i]).toHaveProperty('id');
-    expect(cohorts[i]).toHaveProperty('name');
-    expect(cohorts[i]).toHaveProperty('startDate');
-
-}
-
+  const cohortFirstDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
+  expect(cohortFirstDateElement).toBeInTheDocument();
+  const cohortSecondDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
+  expect(cohortSecondDateElement).toBeInTheDocument();
+    const cohortThirdDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
+  expect(cohortThirdDateElement).toBeInTheDocument();
 });
-
-test('Renders CohortList and test the id field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.id)).toEqual([
-    1,
-    2,
-    3
-  ]);
-});
-
-test('Renders CohortList and test the name field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.name)).toEqual([
-    'MOCK name',
-    'MOCK name 2',
-    'MOCK name 3'
-  ]);
-
-});
-
-test('Renders CohortList and test the startDate field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.startDate)).toEqual([
-    'MOCK date',
-    'MOCK date 2',
-    'MOCK date 3'
-  ]);
-
-});
-
-
-
