@@ -12,7 +12,7 @@ class PdfTest extends PureComponent {
         const doc = new jsPDF();
         console.log('createPdf button pressed!')
 
-        doc.html(document.querySelector('#test1'), {
+        doc.html(document.querySelector('#test5'), {
         callback: function (doc) {
             doc.save();
         },
@@ -25,7 +25,7 @@ class PdfTest extends PureComponent {
     render() {
       return(
           <div id = 'test2' class='whatevgggger'>
-            <button onClick={this.createPdf()} >make PDF</button>
+            <button onClick={this.createPdf} >make wont workkkk PDF</button>
 
           </div>
       )
