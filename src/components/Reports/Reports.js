@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Report from './Report'
+import ReportHeader from "./ReportHeader";
 
 class Reports extends Component {
     constructor(props) {
@@ -24,48 +26,11 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <div id="reportTitle">
-                    <h1>Cohort {this.state.reports.cohortId} Report</h1>
-                </div>
-                <div>
-                    <h2 id="cohortSize">Cohort Size: {this.state.reports.cohortSize}</h2>
-                </div>
-                <div id="genderInfo">
-                    <h2>Gender Distribution</h2>
-                        <div id="genderData">{this.state.reports.gender.map((gender) => 
-                                <div>
-                                    <h3 id={"gender" + gender.type}>{gender.type}: </h3>
-                                    <p id={gender.type + "Percentage"}>Percentage: {gender.percentage}%</p>
-                                    <p id={gender.type + "Number"}>Number: {gender.number}</p>
-                                </div>
-                            )
-                        }   
-                </div>
-                <div id="backgroundInfo">
-                    <h2>Background Data</h2>
-                    <div id="backgroundData">{this.state.reports.background.map((background) => 
-                                <div>
-                                    <h3 id={"background" + background.type}>{background.type}: </h3>
-                                    <p id={background.type + "Percentage"}>Percentage: {background.percentage}%</p>
-                                    <p id={background.type + "Number"}>Number: {background.number}</p>
-                                </div>
-                            )
-                        }   
-                    </div>
-                </div>
-                <div id="challengeCompletion">
-                    <h2>Student Challenge Completion</h2>
-                    <div id="challengeData">{this.state.reports.challenges.map((challenge) => 
-                                <div>
-                                    <h3 id={"challenge" + challenge.type}>{challenge.type}: </h3>
-                                    <p id={challenge.type + "Percentage"}>Percentage: {challenge.percentage}%</p>
-                                </div>
-                            )
-                        }   
-                    </div>
-                </div>
+                <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
+                <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
+                <Report name="background" heading="Background Data" data={this.state.reports.background}/>
+                <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
             </div>
-        </div>
         )
     }
 }

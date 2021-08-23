@@ -5,7 +5,7 @@ describe("Reports", function() {
 
     it("Displays the cohort report for the correct cohort", function() {
         cy.visit('/cohorts/1/reports')
-        cy.get('#reportTitle').should("contain", "Cohort 1 Report")
+        cy.get('#report1').should("contain", "mse-2106-a Report")
     })
 
     it("Displays the cohort size", function() {

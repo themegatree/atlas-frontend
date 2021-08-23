@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Dependencies') {
         steps {
-            sh 'npm install'
+            sh 'npm ci'
         }
     }
     stage('Build') {
@@ -16,10 +16,16 @@ pipeline {
             sh 'npm run build'
         }
     }
-    stage('preTest') {
+    stage('Unit Tests') {
       steps {
         script {
-          sh 'npm ci'
+          sh 'npm test'
+        }
+      }
+    }
+    stage('pre Feature Tests') {
+      steps {
+        script {
           sh 'npm install wait-on'
           sh 'npm install pm2'
           sh 'npm install mocha mochawesome-merge mochawesome-report-generator'
@@ -28,18 +34,18 @@ pipeline {
         }
       }
     }
-    stage('Test') {
+    stage('Feature Tests') {
       steps {
         script {
           sh 'npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/report/mochawesome-report,overwrite=false,html=false,json=true,timestamp=mmddyyyy_HHMMss"'
+          echo 'merging reports'
+          sh 'npx mochawesome-merge cypress/report/mochawesome-report/mochawesome*.json > cypress/report/mochawesome.json'
         }
       }
     }
   }
   post {
     always {
-      echo 'merging reports'
-      sh 'npx mochawesome-merge cypress/report/mochawesome-report/mochawesome*.json > cypress/report/mochawesome.json'
       echo 'stopping local server'
       sh 'npx pm2 kill'
       cleanWs()
