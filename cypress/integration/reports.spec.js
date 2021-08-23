@@ -51,4 +51,7 @@ describe("Reports", function() {
     it("Displays challenge completion bar chart", function() {
         cy.get("#challengeBar").should("be.visible")
     })
+    it("Displays three charts", function() {
+        cy.get("canvas").should("be.visible")
+    })
 })
