@@ -3,5 +3,6 @@ module.exports ={
     "firstName": "Mike",
     "lastName": "Testerson",
     "githubUsername": "testname",
-    "email": "real@email.com"
+    "email": "real@email.com",
+    "avatarUrl": "./__mocks__/exampleProfile.png"
 }
