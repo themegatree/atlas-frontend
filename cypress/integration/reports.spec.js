@@ -40,7 +40,15 @@ describe("Reports", function() {
         cy.get("#ChitterPercentage").should("contain", "100%")
     })
 
-    it("Displays three charts", function() {
-        cy.get("canvas").should("be.visible")
+    it("Displays gender doughnut chart", function() {
+        cy.get("#genderDoughnut").should("be.visible")
+    })
+
+    it("Displays background doughnut chart", function() {
+        cy.get("#backgroundDoughnut").should("be.visible")
+    })
+
+    it("Displays challenge completion bar chart", function() {
+        cy.get("#challengeBar").should("be.visible")
     })
 })

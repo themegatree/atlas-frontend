@@ -30,11 +30,11 @@ class Reports extends Component {
             <div>
                 <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                 <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
-                <Doughnut data={buildData(this.state.reports.gender, "number")} />
+                <Doughnut id="genderDoughnut" data={buildData(this.state.reports.gender, "number")} />
                 <Report name="background" heading="Background Data" data={this.state.reports.background}/>
-                <Doughnut data={buildData(this.state.reports.background, "number")}/>
+                <Doughnut id="backgroundDoughnut" data={buildData(this.state.reports.background, "number")}/>
                 <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
-                <Bar data={buildData(this.state.reports.challenges, "percentage")}/>
+                <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
             </div>
         )
     }
