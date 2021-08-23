@@ -16,7 +16,7 @@ class StudentInfo extends Component{
       }
 
     async componentDidMount(){
-        await fetch(`${process.env.REACT_APP_API_URL}/api/student:${this.state.id}`)
+        await fetch(`${process.env.REACT_APP_API_URL}/api/students:${this.state.id}`)
         .then(res => res.json())
         .then(data => this.setState({studentData: data}))
         await fetch(`https://api.github.com/users/${this.state.studentData.githubUsername}`)
@@ -26,7 +26,7 @@ class StudentInfo extends Component{
     render(){
         return (
             <div>
-                <img alt="Profile Not Found" id="githubImage" src={this.state.avatarUrl}></img>
+                <img alt="Github Profile Not Found" id="githubImage" src={this.state.avatarUrl}></img>
                 <br></br>
                 <p id="id">ID: {this.state.id}</p>
                 <br></br>

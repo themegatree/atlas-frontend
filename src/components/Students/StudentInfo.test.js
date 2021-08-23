@@ -2,12 +2,9 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {StudentInfo} from './StudentInfo.js'
 import data from './__mocks__/student-info-data.js'
-import image from './__mocks__/exampleProfile.png'
-
 
 beforeEach(() => {
-    global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data), 
-      png: ()=> Promise.resolve(image)}))
+    global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data)}))
   })
   
   test('Displays Student Info', async () => {
@@ -25,7 +22,4 @@ beforeEach(() => {
 
     const githubElement = await screen.findByText(/testname/i);
     expect(githubElement).toBeInTheDocument();
-      
-    // const imageElement = await screen.findByText(/ProfileNotFound/i);
-    // expect(imageElement).toBeNull(); 
   });
