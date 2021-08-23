@@ -1,6 +1,6 @@
 describe("Student Info", function() {
     beforeEach(function() {
-        cy.intercept("http://localhost:5000/api/students:1", { fixture: 'studentInfo.json' })
+        cy.intercept("http://localhost:5000/api/students/1", { fixture: 'studentInfo.json' })
         cy.intercept("https://api.github.com/users/testname", { fixture: 'studentInfoImageLink.json' })
         cy.intercept("http://localhost:5000/api/mock", {fixture: 'exampleProfile.png'})
     })

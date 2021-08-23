@@ -16,7 +16,7 @@ class StudentInfo extends Component{
       }
 
     async componentDidMount(){
-        await fetch(`${process.env.REACT_APP_API_URL}/api/students:${this.state.id}`)
+        await fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.state.id}`)
         .then(res => res.json())
         .then(data => this.setState({studentData: data}))
         await fetch(`https://api.github.com/users/${this.state.studentData.githubUsername}`)
