@@ -3,21 +3,21 @@ const buildLabelArray = (data) => {
   return labelsArr;
 }
 
-const buildNumberArray = (data) => {
-  const numbersArr = data.map(obj => parseInt(obj.number) );
+const buildNumberArray = (data, attr) => {
+  const numbersArr = data.map(obj => parseInt(obj[attr]));
   return numbersArr;
 }
 
-const buildData = (data) => {
+const buildData = (data, attr) => {
 
   const dataObj = {
     labels: buildLabelArray(data),
     datasets: [
       {
-        label: '# of Votes',
-        data: buildNumberArray(data),
+        label: 'Average Completion Percentage',
+        data: buildNumberArray(data, attr),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
