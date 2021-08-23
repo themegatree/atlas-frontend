@@ -32,12 +32,12 @@ function App() {
             <Route path="/cohorts">
               <Cohorts />
             </Route>
-            <Route path="/students">
+            <Route exact path="/students">
               <p>replace me</p>
             </Route>
             </Switch>
             <Switch>
-              <Route exact path='/student/:id'>
+              <Route exact path='/students/:id'>
                 <StudentInfo />
               </Route>
           </Switch>

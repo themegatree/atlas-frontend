@@ -5,7 +5,7 @@ describe("Student Info", function() {
         cy.intercept("http://localhost:5000/api/mock", {fixture: 'exampleProfile.png'})
     })
     it("Student Info data test", function() {
-        cy.visit('/student/1')
+        cy.visit('/students/1')
         cy.get('#id').should('contain', '1') 
         cy.get('#firstName').should('contain', 'Mike') 
         cy.get('#lastName').should('contain', 'Testerson') 
