@@ -27,7 +27,7 @@ class StudentInfo extends Component{
             <div>
                 <img alt="Github Profile Not Found" id="githubImage" src={this.props.avatarUrl}></img>
                 <br></br>
-                <p id="id">ID: {this.state.id}</p>
+                <p id="id">ID: {this.props.id}</p>
                 <br></br>
                 <p id="firstName">First Name: {this.state.studentData.firstName}</p>
                 <br></br>
