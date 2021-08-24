@@ -2,6 +2,7 @@ import './App.css';
 import Cohorts from "./components/Cohorts/Cohorts.js"
 import Reports from "./components/Reports/Reports.js"
 import StudentInfo from './components/Students/StudentInfo.js';
+import Dashboard from "./components/Dashboard/Dashboard.js"
 
 import React from "react";
 import {
@@ -40,6 +41,9 @@ function App() {
               <Route exact path='/students/:id'>
                 <StudentInfo />
               </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
           </Switch>
         </div>
       </Router>
