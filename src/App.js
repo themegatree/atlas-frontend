@@ -17,9 +17,7 @@ import {
 function App() {
   return (
     <div className="App">
-      
       <Router>
-      <PdfTest />
         <div>
         
           <ul>
