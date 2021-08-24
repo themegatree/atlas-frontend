@@ -1,16 +1,10 @@
-const buildLabelArray = (data) => {
-  const labelsArr = data.map(obj => obj.type );
-  return labelsArr;
-}
+const buildLabelArray = (data) => data.map(obj => obj.type )
 
-const buildNumberArray = (data, attr) => {
-  const numbersArr = data.map(obj => parseInt(obj[attr]));
-  return numbersArr;
-}
+const buildNumberArray = (data, attr) => data.map(obj => parseInt(obj[attr]))
 
 const buildData = (data, attr) => {
 
-  const dataObj = {
+  return  {
     labels: buildLabelArray(data),
     datasets: [
       {
@@ -37,7 +31,6 @@ const buildData = (data, attr) => {
     ],
   };
 
-  return dataObj;
 }
 
 export default buildData;
