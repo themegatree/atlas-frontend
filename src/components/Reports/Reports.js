@@ -36,42 +36,28 @@ class Reports extends Component {
       .then(res => res.json())
       .then(data => this.setState({reports: data.report}))
     }
+    
+    createPdf = () => {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+		var width = 600;
+		document.body.style.width = width + "px";
 
-    previewPdf = () => {
-        const doc = new jsPDF();
-       
-        doc.html(document.querySelector('#test5'), {
-        callback: function (doc) {
-            doc.output('dataurlnewwindow')
-        },
-        x: 10,
-        y: 10
-        });
+		pdf.html(document.querySelector("#test5"), {
+			callback: function (pdf) {
+				var iframe = document.createElement('iframe', );
+				iframe.setAttribute('style', 'position:absolute;top:0;right:0;height:100%; width:600px');
+                iframe.setAttribute('id','reportIframe')
+				document.body.appendChild(iframe);
+				iframe.src = pdf.output('datauristring');
+                
+			}
+		});
         
     }
-    createPdf = () => {
-        const doc = new jsPDF();
-        doc.html(document.querySelector('#test5'), {
-        callback: function (doc) {
-            doc.save("Report.pdf")
-        },
-        x: 10,
-        y: 10
-        });
+    deleteElementById = () => {
+      
+        document.querySelector("#reportIframe").remove();
     }
-    createPopUp = () => {
-        return (
-        <Popup trigger={<button>PDF</button>} position="bottom center">
-            <div>
-                <span>
-                <button onClick = {this.previewPdf}>Preview PDF</button>
-                <button onClick = {this.createPdf}>Create PDF</button>
-                </span>
-            </div>
-        </Popup>
-
-        )}
-
     render() {
         return(
 <<<<<<< HEAD
@@ -102,7 +88,8 @@ class Reports extends Component {
 =======
 =======
                 <div >
-                        {this.createPopUp()}
+                    <button onClick={this.createPdf}>Ttest</button>
+                    <button onClick={this.deleteElementById}>test</button>
                     </div>
 >>>>>>> 4e2e6ca (Works now but can't get PDF to load in IFRAME)
             </div> 
