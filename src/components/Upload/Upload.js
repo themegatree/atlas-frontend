@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Response from './Response';
 
 class Upload extends Component {
 	constructor(props) {
@@ -8,7 +7,8 @@ class Upload extends Component {
 			selectedFile   : null,
 			assessmentType : 'selfAssessment',
 			errors         : [],
-			color          : ''
+			color          : '',
+			invalid		   : ''
 		};
 	};
 
@@ -30,7 +30,13 @@ class Upload extends Component {
 
 	onFileUpload = () => {
 		const formData = new FormData();
-		console.log(this.state.assessmentType);
+		if(this.state.selectedFile === null){
+			this.setState({invalid: 'No file selected'})
+		}
+		else{
+		let name = this.state.selectedFile.name
+		let extension = name.split('.').pop()
+		if(extension === 'csv'){
 		formData.append('myFile', this.state.selectedFile, this.state.selectedFile.name);
 		formData.append('assessmentType', this.state.assessmentType);
 
@@ -40,10 +46,13 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log(data.response)
 				this.setState({ errors: data.response});
 				this.setTheColor();
 			});
+		}
+		else{
+			this.setState({invalid : 'You have not entered a .csv file'})
+		}}
 	};
 
 	render() {
@@ -64,7 +73,10 @@ class Upload extends Component {
 					Upload
 				</button>
 				<br />
-				<Response color={this.state.color} errors={this.state.errors} />
+				 <div id="errors">
+                {this.state.errors.map((error, i) => <p key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
+            </div>
+				<p id="invalid">{this.state.invalid}</p>
 			</div>
 		);
 	}

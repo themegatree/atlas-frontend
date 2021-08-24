@@ -40,7 +40,6 @@ function App() {
             <Route exact path="/students">
               <p>replace me</p>
             </Route>
-
             </Switch>
             <Switch>
               <Route exact path='/students/:id'>
@@ -49,8 +48,8 @@ function App() {
             <Route path="/assessments/upload">
               <Upload />
             </Route>
-            <Route path="/assessments/upload">
-              <Upload />
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
           </Switch>
         </div>
