@@ -5,7 +5,7 @@ describe("Dashboard", function() {
   })
 
   it("Displays the cohort report for the correct cohort", function() {   
-      cy.get('#title').should("contain", "MSE Dashboard")
+      cy.get('#dashboardTitle').should("contain", "MSE Dashboard")
   })
 
   it("Displays the total number of student", function() {
@@ -24,10 +24,6 @@ describe("Dashboard", function() {
       cy.get("#FemalePercentage").should("contain", "Percentage: 40%")
   })
 
-  it("Displays the student prefer not to say gender percentage", function() { 
-    cy.get("#pntsPercentage").should("contain", "Percentage: 0%")
-  })
-
   it("Displays data for three gender options", function() {
       cy.get('#genderData').children().should('have.length', 3)
   })
@@ -42,10 +38,6 @@ describe("Dashboard", function() {
 
   it("Displays the percentage of students who are white", function() {
       cy.get("#WhitePercentage").should("contain", "50%")
-  })
-
-  it("Displays the percentage of students who are black", function() {
-    cy.get("#BlackPercentage").should("contain", "50%")
   })
 
   it("Displays the at least completed percentage for the chitter", function() {
