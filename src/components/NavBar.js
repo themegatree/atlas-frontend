@@ -1,5 +1,5 @@
 import Body from './Cohorts/BootstrapStyles/Body.js'
-import Reports from './Reports/Report'
+import Reports from './Reports/Reports.js'
 import '../assets/css/styles.css'
 
 import React from 'react';

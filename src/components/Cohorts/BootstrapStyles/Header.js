@@ -3,6 +3,8 @@ import React from "react";
 import DF_Image from '../../../assets/img/DF_Logo.svg'
 
 function App() {
+  const currDate = new Date().toLocaleDateString();
+
   return (
     <div >
     <header className="masthead bg-primary text-white text-center">
@@ -14,7 +16,7 @@ function App() {
                     <div className="divider-custom-icon"><i className="fas fa-star"></i></div>
                     <div className="divider-custom-line"></div>
                 </div>
-                <p className="masthead-subheading font-weight-light mb-0">Placeholder</p>
+                <p className="masthead-subheading font-weight-light mb-0"> {currDate} </p>
             </div>
             </header>
     </div>
