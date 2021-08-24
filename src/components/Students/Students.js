@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import StudentList from "./StudentList.js";
-import studentData from "./__mocks__/student-data.js";
-
 
 class Students extends Component {
   constructor(props) {
