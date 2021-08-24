@@ -10,7 +10,11 @@ import jsPDF from "jspdf";
 >>>>>>> 7ed9ead (first draft of download button working, needs improvement)
 =======
 import Popup from 'reactjs-popup';
+<<<<<<< HEAD
 >>>>>>> 971aaff (handing over to ramiro)
+=======
+import "../../Css/index3.css"
+>>>>>>> 4e2e6ca (Works now but can't get PDF to load in IFRAME)
 
 class Reports extends Component {
     constructor(props) {
@@ -33,26 +37,40 @@ class Reports extends Component {
       .then(data => this.setState({reports: data.report}))
     }
 
-    createPdf = () => {
+    previewPdf = () => {
         const doc = new jsPDF();
-        console.log('createPdf button pressed!')
-
+       
         doc.html(document.querySelector('#test5'), {
         callback: function (doc) {
-            doc.save();
+            doc.output('dataurlnewwindow')
+        },
+        x: 10,
+        y: 10
+        });
+        
+    }
+    createPdf = () => {
+        const doc = new jsPDF();
+        doc.html(document.querySelector('#test5'), {
+        callback: function (doc) {
+            doc.save("Report.pdf")
         },
         x: 10,
         y: 10
         });
     }
+    createPopUp = () => {
+        return (
+        <Popup trigger={<button>PDF</button>} position="bottom center">
+            <div>
+                <span>
+                <button onClick = {this.previewPdf}>Preview PDF</button>
+                <button onClick = {this.createPdf}>Create PDF</button>
+                </span>
+            </div>
+        </Popup>
 
-    // createPopup = () => {
-    //     return (
-    //         <Popup trigger={<button> Trigger</button>} position="right center">
-    //             <div>Popup content here !!</div>
-    //         </Popup>
-    //     )
-    // }
+        )}
 
     render() {
         return(
@@ -67,19 +85,26 @@ class Reports extends Component {
                 <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
 =======
             <div>
-            <button onClick={this.createPdf} >Download PDF</button>
-            {/* <iframe src={"test.js"+encodeURIComponent(content)}/> */}
+            
+                
                 <div id='test5'>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                     <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
                     <Report name="background" heading="Background Data" data={this.state.reports.background}/>
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
+                   
                 </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 7ed9ead (first draft of download button working, needs improvement)
             </div>
             
 =======
+=======
+                <div >
+                        {this.createPopUp()}
+                    </div>
+>>>>>>> 4e2e6ca (Works now but can't get PDF to load in IFRAME)
             </div> 
 >>>>>>> 971aaff (handing over to ramiro)
         )
