@@ -7,33 +7,42 @@ test('Renders Cohort List with two elements', async () => {
     {
       "id": "1",
       "name": "MOCK name",
-      "startDate": "MOCK date"
+      "startDate": "2021-01-12"
     },
         {
       "id": "2",
       "name": "MOCK name 2",
-      "startDate": "MOCK date 2`"
+      "startDate": "2021-02-12"
     },
     {
       "id": "3",
       "name": "MOCK name 3",
-      "startDate": "MOCK date 3"
+      "startDate": "2021-03-12"
     },
     
   ]
-  render(<CohortList cohorts={cohorts} />);
+  render(<CohortList cohorts={cohorts} />);   
 
-  const cohortFirstNameElement = screen.getAllByText(/Name: MOCK name/i)[0];
-  expect(cohortFirstNameElement).toBeInTheDocument();
-  const cohortSecondNameElement = screen.getAllByText(/Name: MOCK name 2/i)[0];
-  expect(cohortSecondNameElement).toBeInTheDocument();
-    const cohortThirdNameElement = screen.getAllByText(/Name: MOCK name 3/i)[0];
-  expect(cohortThirdNameElement).toBeInTheDocument();
 
-  const cohortFirstDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
-  expect(cohortFirstDateElement).toBeInTheDocument();
-  const cohortSecondDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
-  expect(cohortSecondDateElement).toBeInTheDocument();
-    const cohortThirdDateElement = screen.getAllByText(/Start Date: MOCK date/i)[0];
-  expect(cohortThirdDateElement).toBeInTheDocument();
+  const cohortFirstNameElement = screen.getAllByTestId("name")[0];
+  expect(cohortFirstNameElement).toHaveTextContent("Name: MOCK name")
+  const cohortSecondNameElement = screen.getAllByTestId("name")[1];
+  expect(cohortSecondNameElement).toHaveTextContent("Name: MOCK name 2") 
+  const cohortThirdNameElement = screen.getAllByTestId("name")[2];
+  expect(cohortThirdNameElement).toHaveTextContent("Name: MOCK name 3") 
+
+  const cohortFirstDateElement = screen.getAllByTestId("date")[0];
+  expect(cohortFirstDateElement).toHaveTextContent("Start Date: 2021-01-12")
+  const cohortSecondDateElement = screen.getAllByTestId("date")[1];
+  expect(cohortSecondDateElement).toHaveTextContent("Start Date: 2021-02-12")
+  const cohortThirdDateElement = screen.getAllByTestId("date")[2];
+  expect(cohortThirdDateElement).toHaveTextContent("Start Date: 2021-03-12")
+
+  const cohortFirstButtonElement = screen.getAllByTestId("button")[0];
+  expect(cohortFirstButtonElement).toBeInTheDocument();
+  const cohortSecondButtonElement = screen.getAllByTestId("button")[1];
+  expect(cohortSecondButtonElement).toBeInTheDocument();
+  const cohortThirdButtonElement = screen.getAllByTestId("button")[2];
+  expect(cohortThirdButtonElement).toBeInTheDocument();
+
 });

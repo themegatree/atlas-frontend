@@ -1,7 +1,7 @@
 import '../../../assets/css/styles.css'
 import React from "react";
 
-function App() {
+function Footer() {
   return (
     <div >
         <footer className="footer text-center">
@@ -42,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default Footer;

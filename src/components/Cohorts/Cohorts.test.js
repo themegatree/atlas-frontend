@@ -1,63 +1,39 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Cohorts from './Cohorts';
-import data, { cohorts } from './mocks/cohort-data.js'
+import Body from './BootstrapStyles/Body'
+import data from './__mocks__/cohort-data.js'
 
 beforeEach(() => {
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
 })
 
-test("Renders Cohort's List", async () => {
-  await render(<Cohorts />);
+test('Renders Cohort List Header', async () => {
+    render(<Body/>)
+    const headerElement = await screen.findByText(/COHORT LIST/i)
+    expect(headerElement).toBeInTheDocument();
+})
 
-   expect(cohorts).toEqual(
-    expect.arrayContaining([
-      expect.objectContaining({"id": 1, "name": "MOCK name", "startDate": "MOCK date"}),
-      expect.objectContaining({"id": 2, "name": "MOCK name 2", "startDate": "MOCK date 2"})
-    ])
-  );
-
-}
-);
-
-test("Renders Cohort's Name", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[0];
-  expect(cohort.name).toEqual("MOCK name")
-}
-);
-
-test("Renders Cohort's Date", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[0];
-  expect(cohort.startDate).toEqual("MOCK date")
-}
-);
+test('Renders Name Field', async () => {
+    render(<Body />)
+    const nameElement = await screen.findByText(/Name: Mock name/i)
+    expect(nameElement).toBeInTheDocument();
+})
 
 
-test("Renders Cohort's Name Two", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[1];
-  expect(cohort.name).toEqual("MOCK name 2")
-}
-);
+test('Renders Start Date Field', async () => {
+    render(<Body />)
+    const dateElement = await screen.findByText(/Mock date/i)
+    expect(dateElement).toBeInTheDocument();
+})
 
-test("Renders Cohort's Date Two", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[1];
-  expect(cohort.startDate).toEqual("MOCK date 2")
-}
-);
+xtest('Renders Cohort Size -- Still Pending Until Checkboxes', async () => {
+    render(<Body />)
+    const sizeElement = await screen.findByText(/Cohort Size: 20/i)
+    expect(sizeElement).toBeInTheDocument();
+})
 
-test("Renders Cohort's Name Three", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[2];
-  expect(cohort.name).toEqual("MOCK name 3")
-}
-);
-
-test("Renders Cohort's Date Three", async () => {
-  await render(<Cohorts />);
-  const cohort = cohorts[2];
-  expect(cohort.startDate).toEqual("MOCK date 3")
-}
-);
+test('Renders Button Element', async () => {
+    render(<Body />)
+    const buttonElement = await screen.findByTestId("button");
+    expect(buttonElement).toBeInTheDocument();
+})

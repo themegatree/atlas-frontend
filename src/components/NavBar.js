@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 
-function App() {
+function NavBar() {
   return (
     <div >
       <Router>
@@ -46,11 +46,10 @@ function App() {
           </Switch>
       </Router>
 
-
     </div>
   );
 }
 
-export default App;
+export default NavBar;
 
 

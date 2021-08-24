@@ -11,6 +11,9 @@ test('Renders Cohort and check the fields are displaying the right data', async 
   render(<Cohort cohort={cohort} />);
   const cohortNameElement = screen.getByText(/MOCK name/i);
   const cohortDateElement = screen.getByText(/MOCK date/i);
+  const viewDetailsButton =  await screen.findByTestId('button')
+
   expect(cohortNameElement).toBeInTheDocument();
   expect(cohortDateElement).toBeInTheDocument();
+  expect(viewDetailsButton).toBeInTheDocument();
 });
