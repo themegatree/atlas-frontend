@@ -1,5 +1,10 @@
 import Body from './Cohorts/BootstrapStyles/Body.js'
 import Reports from './Reports/Reports.js'
+import StudentInfo from './Students/StudentInfo.js';
+import Upload from "./Upload/Upload.js"
+// import Dashboard from "./Dashboard/Dashboard.js";
+import Students from "./Students/Students.js"
+
 import '../assets/css/styles.css'
 
 import React from 'react';
@@ -29,6 +34,9 @@ function NavBar() {
             <li className='nav-item mx-0 mx-lg-1'>
               <Link className='nav-link py-3 px-0 px-lg-3 rounded'  to='/students'>Students</Link>
             </li>
+            <li className='nav-item mx-0 mx-lg-1'>
+              <Link className='nav-link py-3 px-0 px-lg-3 rounded' to="/assessments/upload">Assessments Upload</Link>
+            </li>
           </ul>
           </div>
           </div>
@@ -39,10 +47,20 @@ function NavBar() {
               <Reports />
             </Route>
             <Route path='/cohorts' component={Body}/>
-            <Route path='/students'>
-              <p>replace me</p>
+            <Route path="/students">
+              <Students />
             </Route>
-
+            </Switch>
+            <Switch>
+              <Route exact path='/students/:id'>
+                <StudentInfo />
+              </Route>
+            <Route path="/assessments/upload">
+              <Upload />
+            </Route>
+            <Route path="/dashboard">
+              {/* <Dashboard /> */}
+            </Route>
           </Switch>
       </Router>
 
@@ -51,5 +69,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-

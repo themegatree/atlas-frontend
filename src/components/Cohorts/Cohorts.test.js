@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import Cohorts from './Cohorts';
 import Body from './BootstrapStyles/Body'
 import data from './__mocks__/cohort-data.js'
 
