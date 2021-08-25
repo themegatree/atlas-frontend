@@ -2,6 +2,7 @@ import './App.css';
 import Cohorts from "./components/Cohorts/Cohorts.js";
 import Reports from "./components/Reports/Reports.js";
 import StudentInfo from './components/Students/StudentInfo.js';
+import Upload from "./components/Upload/Upload.js"
 import Dashboard from "./components/Dashboard/Dashboard.js";
 import Students from "./components/Students/Students.js"
 
@@ -25,6 +26,9 @@ function App() {
             <li>
               <Link to="/students">Students</Link>
             </li>
+            <li>
+              <Link to="/assessments/upload">Assessments Upload</Link>
+            </li>
           </ul>
 
           <Switch>
@@ -42,6 +46,9 @@ function App() {
               <Route exact path='/students/:id'>
                 <StudentInfo />
               </Route>
+            <Route path="/assessments/upload">
+              <Upload />
+            </Route>
             <Route path="/dashboard">
               <Dashboard />
             </Route>
