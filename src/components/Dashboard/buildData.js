@@ -1,10 +1,10 @@
-const buildLabelArray = (data) => data.map(obj => obj.type )
+const buildLabelArray = (data) => data.map(obj => obj.type) 
 
 const buildNumberArray = (data, attr) => data.map(obj => parseInt(obj[attr]))
 
 const buildData = (data, attr) => {
 
-  return  {
+  return {
     labels: buildLabelArray(data),
     datasets: [
       {

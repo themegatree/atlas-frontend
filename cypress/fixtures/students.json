@@ -1,0 +1,32 @@
+{
+    "students": [
+      {
+        "id": "1",
+        "firstName": "Test",
+        "lastName": "Testerson",
+        "githubUsername": "iTest",
+        "email": "real@email.com"
+      },
+      {
+        "id": "2",
+        "firstName": "Anonymous",
+        "lastName": "User",
+        "githubUsername": "ucantseeme",
+        "email": "invisible@email.com"
+      },
+      {
+        "id": "3",
+        "firstName": "Imaginary",
+        "lastName": "Person",
+        "githubUsername": "ghostingU",
+        "email": "notanemail@email.com"
+      },
+      {
+        "id": "4",
+        "firstName": "Alfred",
+        "lastName": "Von Test",
+        "githubUsername": "afred",
+        "email": "vt-al@email.com"
+      }
+    ]
+  }

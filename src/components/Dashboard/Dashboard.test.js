@@ -2,6 +2,12 @@ import { render, screen } from '@testing-library/react';
 import Dashboard from './Dashboard'
 import data from './__mocks__/dashboard-data'
 
+
+jest.mock('react-chartjs-2', () => ({
+    Doughnut: () => null,
+    Bar: () => null
+  }))
+
 beforeEach(() => {
     global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
 })
