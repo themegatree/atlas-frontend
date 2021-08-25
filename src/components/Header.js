@@ -1,6 +1,6 @@
-import '../../../assets/css/styles.css'
+import '../assets/css/styles.css'
 import React from "react";
-import dfImage from '../../../assets/img/DF_Logo.svg'
+import dfImage from '../assets/img/DF_Logo.svg'
 
 function Header() {
   const currDate = new Date().toLocaleDateString();
