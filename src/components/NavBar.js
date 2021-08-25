@@ -2,7 +2,7 @@ import Body from './Cohorts/BootstrapStyles/Body.js'
 import Reports from './Reports/Reports.js'
 import StudentInfo from './Students/StudentInfo.js';
 import Upload from "./Upload/Upload.js"
-// import Dashboard from "./Dashboard/Dashboard.js";
+import Dashboard from "./Dashboard/Dashboard.js";
 import Students from "./Students/Students.js"
 
 import '../assets/css/styles.css'
@@ -59,7 +59,7 @@ function NavBar() {
               <Upload />
             </Route>
             <Route path="/dashboard">
-              {/* <Dashboard /> */}
+              <Dashboard />
             </Route>
           </Switch>
       </Router>
