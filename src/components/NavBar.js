@@ -61,6 +61,7 @@ function NavBar() {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
+            <Route path="/cohort/id" />
           </Switch>
       </Router>
 
