@@ -65,6 +65,7 @@ describe("Reports", function() {
         cy.get('body').click(10,100)
         cy.get('#reportIframe').should('not.exist')
     })
+
     it("Displays three charts", function() {
         cy.get("canvas").should("be.visible")
     })

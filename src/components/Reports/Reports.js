@@ -20,14 +20,18 @@ class Reports extends Component {
         }
     }
     componentDidMount() {
-        document.body.addEventListener('click', function(e) { 
+        this.exitIframeListener()
+        fetch(`${process.env.REACT_APP_API_URL}/api/cohorts/${this.props.cohortId}/reports`)
+        .then(res => res.json())
+        .then(data => this.setState({reports: data.report}))
+    }
+
+    exitIframeListener = () => {
+        document.body.addEventListener('click', function(e) {
             if(document.querySelector("#reportIframe")) {
                 document.querySelector("#reportIframe").remove();
             }
         })
-        fetch(`${process.env.REACT_APP_API_URL}/api/cohorts/${this.props.cohortId}/reports`)
-      .then(res => res.json())
-      .then(data => this.setState({reports: data.report}))
     }
     createPdf = () => {
     const pdf = new jsPDF('p', 'pt', 'letter');
@@ -45,7 +49,7 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <button onClick={this.createPdf}>PDF</button>
+                <button id="previewPDF" onClick={this.createPdf}>PDF</button>
                 <div id='test2'>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                     <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
@@ -55,7 +59,7 @@ class Reports extends Component {
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
                     <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
                 </div>
-            </div> 
+            </div>
         )
     }
 }
