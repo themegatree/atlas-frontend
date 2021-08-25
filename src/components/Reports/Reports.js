@@ -25,7 +25,7 @@ class Reports extends Component {
                 document.querySelector("#reportIframe").remove();
             }
         })
-        fetch(`${process.env.REACT_APP_API_URL}/api/cohorts/${this.props.cohort.id}/reports`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/cohorts/${this.props.cohortId}/reports`)
       .then(res => res.json())
       .then(data => this.setState({reports: data.report}))
     }
@@ -53,7 +53,7 @@ class Reports extends Component {
                     <Report name="background" heading="Background Data" data={this.state.reports.background}/>
                     <Doughnut id="backgroundDoughnut" data={buildData(this.state.reports.background, "number")}/>
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
-                    <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>  
+                    <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
                 </div>
             </div> 
         )
