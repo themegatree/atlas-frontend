@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Upload extends Component {
 	constructor(props) {
 		super(props);
@@ -40,7 +41,7 @@ class Upload extends Component {
 		formData.append('myFile', this.state.selectedFile, this.state.selectedFile.name);
 		formData.append('assessmentType', this.state.assessmentType);
 
-		fetch('http://localhost:5000/api/fileupload', {
+		fetch(`${process.env.REACT_APP_API_URL}/api/fileupload`, {
 			method : 'POST',
 			body   : formData
 		})
