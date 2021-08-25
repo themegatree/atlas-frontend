@@ -1,8 +1,9 @@
 import './App.css';
-import Cohorts from "./components/Cohorts/Cohorts.js"
-import Reports from "./components/Reports/Reports.js"
+import Cohorts from "./components/Cohorts/Cohorts.js";
+import Reports from "./components/Reports/Reports.js";
 import StudentInfo from './components/Students/StudentInfo.js';
-import Dashboard from "./components/Dashboard/Dashboard.js"
+import Dashboard from "./components/Dashboard/Dashboard.js";
+import Students from "./components/Students/Students.js"
 
 import React from "react";
 import {
@@ -33,8 +34,8 @@ function App() {
             <Route path="/cohorts">
               <Cohorts />
             </Route>
-            <Route exact path="/students">
-              <p>replace me</p>
+            <Route path="/students">
+              <Students />
             </Route>
             </Switch>
             <Switch>
