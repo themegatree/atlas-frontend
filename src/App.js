@@ -38,7 +38,7 @@ function App() {
             <Route path="/cohorts">
               <Cohorts />
             </Route>
-            <Route path="/students">
+            <Route exact path="/students">
               <Students />
             </Route>
             </Switch>

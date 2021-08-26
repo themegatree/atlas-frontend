@@ -4,5 +4,5 @@ module.exports ={"student":{
     "lastName": "Testerson",
     "githubUsername": "testname",
     "email": "real@email.com"},
-    "avatarUrl": "./__mocks__/exampleProfile.png"
+    "avatar_url": "./__mocks__/exampleProfile.png"
 }
