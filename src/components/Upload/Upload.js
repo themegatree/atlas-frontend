@@ -34,6 +34,9 @@ class Upload extends Component {
 		if(this.state.selectedFile === null){
 			this.setState({invalid: 'No file selected'})
 		}
+		else if (this.state.selectedFile.size /1000/1000 > 2){
+			this.setState({invalid: 'The file you have chosen is above 2MB'})
+		}
 		else{
 		let name = this.state.selectedFile.name
 		let extension = name.split('.').pop()
@@ -77,7 +80,7 @@ class Upload extends Component {
 				 <div id="errors">
                 {this.state.errors.map((error, i) => <p key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
             </div>
-				<p id="invalid">{this.state.invalid}</p>
+				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
 			</div>
 		);
 	}
