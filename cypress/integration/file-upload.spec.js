@@ -35,12 +35,30 @@ describe('file upload', function(){
             cy.get('input[type="file"]').attachFile({
                 fileContent: fileContent.toString(),
                 fileName: 'failingmock.pdf',
-                mimeType: '.pdf'
+                mimeType: '.pdf',
             });
         });
         cy.get('#assessmentType').select('moduleChallenge')
         cy.get('#upload').click()
         cy.get('#invalid').should('contain', 'You have not entered a .csv file')
+        
+    })
+    it('will not run and display an error if the file entered is more than 2 MB.', function(){
+        cy.visit('/assessments/upload')
+        cy.fixture('failingmock.csv').then(fileContent => {
+            cy.get('input[type="file"]').attachFile({
+                fileContent: fileContent.toString(),
+                fileName: 'failingmock.csv',
+                mimeType: '.csv',
+            }).then(fileData => { 
+                Object.defineProperty(fileData[0].files[0],"size", {
+                    get: cy.stub().returns(3000000)
+                })
+            });
+        });
+        cy.get('#assessmentType').select('moduleChallenge')
+        cy.get('#upload').click()
+        cy.get('#invalid').should('contain', 'The file you have chosen is above 2MB')
         
     })
 })
