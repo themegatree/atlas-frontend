@@ -17,15 +17,15 @@ class StudentInfo extends Component{
     async componentDidMount(){
         await fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.props.id}`)
         .then(res => res.json())
-        .then(data => this.setState({studentData: data}))
+        .then(data => this.setState({studentData: data.student}))
         await fetch(`https://api.github.com/users/${this.state.studentData.githubUsername}`)
         .then(res => res.json())
-        .then(data =>  this.setState({avatarUrl: data.avatarUrl}))
+        .then(data =>  this.setState({avatar_Url: data.avatar_url}))
     }
     render(){
         return (
             <div>
-                <img alt="Github Profile Not Found" id="githubImage" src={this.props.avatarUrl}></img>
+                <img alt="Github Profile Not Found" id="githubImage" src={this.state.avatar_Url}></img>
                 <br></br>
                 <p id="id">ID: {this.props.id}</p>
                 <br></br>
