@@ -1,58 +1,56 @@
-import { render} from '@testing-library/react';
+
+import { render, screen } from '@testing-library/react';
 import CohortList from './CohortList';
-import data, { cohorts } from './mocks/cohort-data.js'
 
-beforeEach(() => {
-  global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
-})
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
+  useParams: () => ({
+    cohortId: 'cohort-id1',
+  }),
+  useRouteMatch: () => ({ url: '/cohorts/cohortID' }),
+}));
 
-test('Renders CohortList and test the properties of cohorts list', async () => {
+test('Renders Cohort List with three elements', async () => {
+  const cohorts = [
+    {
+      "id": "1",
+      "name": "MOCK name",
+      "startDate": "2021-01-12"
+    },
+        {
+      "id": "2",
+      "name": "MOCK name 2",
+      "startDate": "2021-02-12"
+    },
+    {
+      "id": "3",
+      "name": "MOCK name 3",
+      "startDate": "2021-03-12"
+    },
+    
+  ]
+  render(<CohortList cohorts={cohorts} />);   
 
-  await render(<CohortList cohorts={cohorts} />);
 
-  for (let i = 0; i < cohorts.length; i += 1) {
-    expect(cohorts[i]).toHaveProperty('id');
-    expect(cohorts[i]).toHaveProperty('name');
-    expect(cohorts[i]).toHaveProperty('startDate');
+  const cohortFirstNameElement = screen.getAllByTestId("name")[0];
+  expect(cohortFirstNameElement).toHaveTextContent("Name: MOCK name")
+  const cohortSecondNameElement = screen.getAllByTestId("name")[1];
+  expect(cohortSecondNameElement).toHaveTextContent("Name: MOCK name 2") 
+  const cohortThirdNameElement = screen.getAllByTestId("name")[2];
+  expect(cohortThirdNameElement).toHaveTextContent("Name: MOCK name 3") 
 
-}
+  const cohortFirstDateElement = screen.getAllByTestId("date")[0];
+  expect(cohortFirstDateElement).toHaveTextContent("Start Date: 2021-01-12")
+  const cohortSecondDateElement = screen.getAllByTestId("date")[1];
+  expect(cohortSecondDateElement).toHaveTextContent("Start Date: 2021-02-12")
+  const cohortThirdDateElement = screen.getAllByTestId("date")[2];
+  expect(cohortThirdDateElement).toHaveTextContent("Start Date: 2021-03-12")
+
+  const cohortFirstButtonElement = screen.getAllByTestId("button")[0];
+  expect(cohortFirstButtonElement).toBeInTheDocument();
+  const cohortSecondButtonElement = screen.getAllByTestId("button")[1];
+  expect(cohortSecondButtonElement).toBeInTheDocument();
+  const cohortThirdButtonElement = screen.getAllByTestId("button")[2];
+  expect(cohortThirdButtonElement).toBeInTheDocument();
 
 });
-
-test('Renders CohortList and test the id field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.id)).toEqual([
-    1,
-    2,
-    3
-  ]);
-});
-
-test('Renders CohortList and test the name field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.name)).toEqual([
-    'MOCK name',
-    'MOCK name 2',
-    'MOCK name 3'
-  ]);
-
-});
-
-test('Renders CohortList and test the startDate field', async () => {
-
-  await render(<CohortList cohorts={cohorts} />);
-  expect(cohorts).toHaveLength(3);
-  expect(cohorts.map(cohort => cohort.startDate)).toEqual([
-    'MOCK date',
-    'MOCK date 2',
-    'MOCK date 3'
-  ]);
-
-});
-
-
-

@@ -38,7 +38,7 @@ class Reports extends Component {
         pdf.html(document.querySelector("#test2"), {
             callback: function (pdf) {
                 const iframe = document.createElement('iframe');
-                iframe.setAttribute('style', 'position:absolute;top:10%;left:10%;height:80%; width:80%');
+                iframe.setAttribute('style', 'position:absolute;top:800px;left:135px;height:80%; width:80%');
                 iframe.setAttribute('id','reportIframe')
                 document.body.appendChild(iframe);
                 iframe.src = pdf.output('datauristring');
@@ -49,7 +49,6 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <button id="previewPDF" onClick={this.createPdf}>PDF</button>
                 <div id='test2'>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                     <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
@@ -59,6 +58,7 @@ class Reports extends Component {
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
                     <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
                 </div>
+                 <button id="previewPDF" onClick={this.createPdf}>PDF</button>
             </div>
         )
     }
