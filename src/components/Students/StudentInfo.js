@@ -16,7 +16,7 @@ class StudentInfo extends Component{
     async componentDidMount(){
         await fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.props.id}`)
         .then(res => res.json())
-        .then(data => this.setState({studentData: data.student, studentChallenges: data.studentChallenges}))
+        .then(data => this.setState({studentData: data.student}))
         await fetch(`https://api.github.com/users/${this.state.studentData.githubUsername}`)
         .then(res => res.json())
         .then(data =>  this.setState({avatar_Url: data.avatar_url}))
@@ -33,7 +33,7 @@ class StudentInfo extends Component{
                 <p id="lastName"><b>Last Name:</b> {this.state.studentData.lastName}</p>
                 <p id="github"><b>Github Username:</b> {this.state.studentData.githubUsername}</p>
                 <p id="email"><b>Email:</b> {this.state.studentData.email}</p>
-                <h3>Challenges</h3>
+                <h3 id="challenges">Challenges</h3>
                 <table>
                     <tr>
                         <th>Challenge</th>
@@ -46,13 +46,15 @@ class StudentInfo extends Component{
                         {!(this.state.studentData.length === 0) &&
                             this.state.studentData.ModuleChallenges.map((challenge, index) => (
                                 <tr>
-                                    <td>{challenge.challengeName}</td>
-                                    <td>{challenge.language}</td>
-                                    <td>{challenge.studentScore}</td>
-                                    <td>{challenge.coachScore}</td>
-                                    <td>{challenge.dueDate.slice(0, 10)}</td>
+                                    <td id={`challengeName-${index}`}>{challenge.challengeName}</td>
+                                    <td id={`language-${index}`}>{challenge.language}</td>
+                                    <td id={`studentScore-${index}`}>{challenge.studentScore}</td>
+                                    <td id={`coachScore-${index}`}>{challenge.coachScore}</td>
+                                    <td id={`dueDate-${index}`}>{challenge.dueDate.slice(0, 10)}</td>
+                                    
                                     {challenge.submissionDate.length > 0 ? 
-                                        <td>{challenge.submissionDate.slice(0, 10)}</td> : <td>Not submitted</td>
+                                        <td id={`submissionDate-${index}`}>{challenge.submissionDate.slice(0, 10)}</td> : 
+                                        <td id={`submissionDate-${index}`}>Not submitted</td>
                                     }
                                 </tr>
                             ))

@@ -4,34 +4,30 @@
         "firstName": "Mike",
         "lastName": "Testerson",
         "githubUsername": "testname",
-        "email": "real@email.com"
-    },
-
-    "studentChallenges": [{
-        "StudentId": "1",
-        "challengeName": "testChallenge",
-        "language": "eng",
-        "studentScore": "8",
-        "coachScore": "7",
-        "dueDate": "2021-08-16 09:30:00+01",
-        "submissionDate": "2021-08-15 20:30:43+01"
-    },
-
-    {"StudentId": "1",
-        "challengeName": "testChallenge2",
-        "language": "eng",
-        "studentScore": "6",
-        "coachScore": "6",
-        "dueDate": "2021-08-07 09:30:00+01",
-        "submissionDate": "2021-08-06 19:53:37+01"
-    },
-
-    {"StudentId": "1",
-        "challengeName": "testChallenge3",
-        "language": "eng",
-        "studentScore": "9",
-        "coachScore": "8",
-        "dueDate": "2021-07-14 09:30:00+01",
-        "submissionDate": ""
-    }]
+        "email": "real@email.com",
+        "ModuleChallenges": [
+            {"id":1,
+                "StudentId":1,
+                "challengeName":"Bank",
+                "language":"NodeJS",
+                "studentScore":"complete",
+                "coachScore":"complete",
+                "dueDate":"2021-08-07T00:00:00.000Z",
+                "submissionDate": "2021-08-06T00:00:00.000Z",
+                "createdAt":"2021-08-29T00:00:00.000Z",
+                "updatedAt":"2021-08-29T00:00:00.000Z"
+            },
+            {"id":2,
+                "StudentId":1,
+                "challengeName":"Chitter",
+                "language":"NodeJS",
+                "studentScore":"complete",
+                "coachScore":"incomplete",
+                "dueDate":"2021-08-18T00:00:00.000Z",
+                "submissionDate": "2021-08-16T00:00:00.000Z",
+                "createdAt":"2021-08-29T00:00:00.000Z",
+                "updatedAt":"2021-08-29T00:00:00.000Z"
+            }
+        ]
+    }
 }
