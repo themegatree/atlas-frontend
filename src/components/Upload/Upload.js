@@ -59,8 +59,9 @@ class Upload extends Component {
 	render() {
 		return (
 			<div>
+				<br />
 				<input id="choose-file" type="file" accept=".csv" name="upload" onChange={this.onFileChange} />
-				<label htmlFor="assessment-type">Assessment Type</label>
+				<label htmlFor="assessment-type">Assessment Type </label>
 				<select
 					value={this.state.assessmentType}
 					name="assessmentType"
@@ -69,7 +70,7 @@ class Upload extends Component {
 				>
 					<option value="selfAssessment">Self Assessment</option>
 					<option value="moduleChallenge">Module Challenge</option>
-				</select>
+				</select>&nbsp;
 				<button id="upload" onClick={this.onFileUpload}>
 					Upload
 				</button>

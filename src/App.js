@@ -19,17 +19,12 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/cohorts">Cohorts</Link>
-            </li>
-            <li>
-              <Link to="/students">Students</Link>
-            </li>
-            <li>
-              <Link to="/assessments/upload">Assessments Upload</Link>
-            </li>
-          </ul>
+
+            <Link to="/cohorts">Cohorts</Link>
+            <br />
+            <Link to="/students">Students</Link>
+            <br />
+            <Link to="/assessments/upload">Assessments Upload</Link>
 
           <Switch>
             <Route path="/cohorts/:cohortId/reports">
