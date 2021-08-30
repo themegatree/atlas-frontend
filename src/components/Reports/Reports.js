@@ -49,7 +49,8 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <div id='test2'>
+
+                <div>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                     <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
                     <Doughnut id="genderDoughnut" data={buildData(this.state.reports.gender, "number")} />
@@ -58,7 +59,9 @@ class Reports extends Component {
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
                     <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
                 </div>
-                 <button id="previewPDF" onClick={this.createPdf}>PDF</button>
+                   <div>
+                        <button id="previewPDF" onClick={this.createPdf}>PDF</button>
+                   </div>
             </div>
         )
     }
