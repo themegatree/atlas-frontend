@@ -1,11 +1,10 @@
 import './App.css';
 import Cohorts from "./components/Cohorts/Cohorts.js";
 import Reports from "./components/Reports/Reports.js";
+import Students from "./components/Students/Students.js"
 import StudentInfo from './components/Students/StudentInfo.js';
 import Upload from "./components/Upload/Upload.js"
 import Dashboard from "./components/Dashboard/Dashboard.js";
-import Students from "./components/Students/Students.js"
-
 import React from "react";
 import {
   BrowserRouter as Router,

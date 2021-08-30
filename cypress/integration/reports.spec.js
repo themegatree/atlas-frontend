@@ -51,6 +51,21 @@ describe("Reports", function() {
     it("Displays challenge completion bar chart", function() {
         cy.get("#challengeBar").should("be.visible")
     })
+
+    it("Lets you preview the PDF", function() {
+        cy.visit('/cohorts/1/reports')
+        cy.get("#previewPDF").click()
+        cy.get('#reportIframe').should('be.visible')
+    })
+
+    it("Lets you close the PDF preview", function() {
+        cy.visit('/cohorts/1/reports')
+        cy.get("#previewPDF").click()
+        cy.wait(500)
+        cy.get('body').click(10,100)
+        cy.get('#reportIframe').should('not.exist')
+    })
+
     it("Displays three charts", function() {
         cy.get("canvas").should("be.visible")
     })
