@@ -8,8 +8,7 @@ describe('file upload', function(){
 
     it('will not run if no file is selected', function(){
         cy.visit('/assessments/upload')
-        cy.get('#assessmentType').select('moduleChallenge')
-        cy.get('#upload').click()
+        cy.get('#upload').click({force: true})
         cy.get('#invalid').should('contain', 'No file selected')
         
     })
@@ -23,8 +22,7 @@ describe('file upload', function(){
                 mimeType: '.csv'
             });
         });
-        cy.get('#assessmentType').select('moduleChallenge')
-        cy.get('#upload').click()
+        cy.get('#upload').click({force: true})
         cy.get('#error-1').should('contain', 'Student Score: wrong is invalid, on line 2')
         
     })
@@ -38,8 +36,7 @@ describe('file upload', function(){
                 mimeType: '.pdf',
             });
         });
-        cy.get('#assessmentType').select('moduleChallenge')
-        cy.get('#upload').click()
+        cy.get('#upload').click({force: true})
         cy.get('#invalid').should('contain', 'You have not entered a .csv file')
         
     })
@@ -56,8 +53,7 @@ describe('file upload', function(){
                 })
             });
         });
-        cy.get('#assessmentType').select('moduleChallenge')
-        cy.get('#upload').click()
+        cy.get('#upload').click({force: true})
         cy.get('#invalid').should('contain', 'The file you have chosen is above 2MB')
         
     })
