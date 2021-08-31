@@ -1,9 +1,9 @@
 import CohortsContainer from './Cohorts/CohortsContainer.js'
 import Reports from './Reports/Reports.js'
-import StudentInfo from './Students/StudentInfo.js';
+import StudentInfo from './Students/StudentProfile/StudentInfo.js';
 import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard.js";
-import Students from "./Students/Students.js"
+import Students from "./Students/StudentList/Students.js"
 
 import '../assets/css/styles.css'
 
