@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StudentList from "./StudentList.js";
+import { sortByPropDesc } from "../../../utils/arrayObjects.js";
 
 class Students extends Component {
   constructor(props) {
@@ -9,15 +10,10 @@ class Students extends Component {
     }
   }
 
-  sortBy(students, sortVariable, direction) {
-    if (direction === "alphabetical"){return students.sort((a,b) => (a[sortVariable] > b[sortVariable]) ? 1 : -1)}
-    else if (direction === "reverse"){return students.sort((a,b) => (a[sortVariable] < b[sortVariable]) ? 1 : -1)}
-  }
-
   componentDidMount() {
     fetch(`${process.env.REACT_APP_API_URL}/api/students`)
       .then(res => res.json())
-      .then(data => this.setState({students: this.sortBy(data.students, "lastName", "alphabetical")}))
+      .then(data => this.setState({students: sortByPropDesc(data.students, "lastName")}))
   }
 
   render() {
