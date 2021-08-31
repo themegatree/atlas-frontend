@@ -4,6 +4,9 @@ import Report from '../Report/Report'
 import ReportHeader from "../ReportHeader/ReportHeader";
 import buildData from "./buildData";
 import jsPDF from "jspdf";
+import "./Reports.css"
+import barChartOptions from "./barChartOptions"
+import doughnutChartOptions from "./doughnutChartOptions"
 
 class Reports extends Component {
     constructor(props) {
@@ -51,12 +54,14 @@ class Reports extends Component {
             <div>
                 <div id='test2'>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
+                    <div className="graphGrid">
+                        <div className="graph"><Doughnut id="genderDoughnut" data={buildData(this.state.reports.gender, "number")} options={doughnutChartOptions('Gender Distribution')}/></div>
+                        <div className="graph"><Doughnut id="backgroundDoughnut" data={buildData(this.state.reports.background, "number")} options={doughnutChartOptions('Background Distribution')}/></div>
+                        <div className="graph"><Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")} options={barChartOptions('Challenge Progress')}/></div>
+                    </div>
                     <Report name="gender" heading="Gender Distribution" data={this.state.reports.gender}/>
-                    <Doughnut id="genderDoughnut" data={buildData(this.state.reports.gender, "number")} />
                     <Report name="background" heading="Background Data" data={this.state.reports.background}/>
-                    <Doughnut id="backgroundDoughnut" data={buildData(this.state.reports.background, "number")}/>
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
-                    <Bar id="challengeBar" data={buildData(this.state.reports.challenges, "percentage")}/>
                 </div>
                 <div>
                     <button id="previewPDF" onClick={this.createPdf}>PDF</button>

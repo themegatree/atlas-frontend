@@ -1,0 +1,13 @@
+.graphGrid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.graph
+{
+  width: 30%;
+} 
