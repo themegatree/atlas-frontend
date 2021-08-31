@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import data from './__mocks__/report-data.js'
+import data from '../__mocks__/report-data.js'
 import Report from './Report'
 
 test('Renders Heading', async () => {

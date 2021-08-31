@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Reports from './Reports'
-import data from './__mocks__/reports-data.js'
+import data from '../__mocks__/reports-data.js'
 
 jest.mock('react-chartjs-2', () => ({
     Doughnut: () => null,
