@@ -16,9 +16,8 @@ import {
 } from 'react-router-dom';
 
 
-function NavBar() {
+const NavBar = () => {
   return (
-    <div >
       <Router>
         <div className='navbar navbar-expand-lg bg-secondary text-uppercase fixed-top' id='mainNav'>
         <div className='container'>
@@ -65,8 +64,6 @@ function NavBar() {
             </Route>
           </Switch>
       </Router>
-
-    </div>
   );
 }
 
