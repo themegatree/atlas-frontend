@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StudentList from "./StudentList.js";
-import { sortByPropDesc } from "../../../utils/arrayObjects.js";
+import { sortByPropAsc } from "../../../utils/arrayObjects.js";
 
 class Students extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Students extends Component {
   componentDidMount() {
     fetch(`${process.env.REACT_APP_API_URL}/api/students`)
       .then(res => res.json())
-      .then(data => this.setState({students: sortByPropDesc(data.students, "lastName")}))
+      .then(data => this.setState({students: sortByPropAsc(data.students, "lastName")}))
   }
 
   render() {
