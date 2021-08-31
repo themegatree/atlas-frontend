@@ -9,14 +9,15 @@ class Students extends Component {
     }
   }
 
-  sortByLastNameDesc(students) {
-    return students.sort((a,b) => (a.lastName > b.lastName) ? 1 : -1)
+  sortBy(students, sortVariable, direction) {
+    if (direction === "alphabetical"){return students.sort((a,b) => (a[sortVariable] > b[sortVariable]) ? 1 : -1)}
+    else if (direction === "reverse"){return students.sort((a,b) => (a[sortVariable] < b[sortVariable]) ? 1 : -1)}
   }
 
   componentDidMount() {
     fetch(`${process.env.REACT_APP_API_URL}/api/students`)
       .then(res => res.json())
-      .then(data => this.setState({students: this.sortByLastNameDesc(data.students)}))
+      .then(data => this.setState({students: this.sortBy(data.students, "lastName", "alphabetical")}))
   }
 
   render() {
