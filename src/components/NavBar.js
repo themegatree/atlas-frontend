@@ -1,5 +1,5 @@
 import CohortsContainer from './Cohorts/CohortsContainer.js'
-import Reports from './Reports/Reports.js'
+import Reports from './Reports/Reports/Reports'
 import StudentInfo from './Students/StudentProfile/StudentInfo.js';
 import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard.js";

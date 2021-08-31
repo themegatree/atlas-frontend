@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Doughnut, Bar } from "react-chartjs-2";
-import Report from './Report'
-import ReportHeader from "./ReportHeader";
+import Report from '../Report/Report'
+import ReportHeader from "../ReportHeader/ReportHeader";
 import buildData from "./buildData";
 import jsPDF from "jspdf";
 
