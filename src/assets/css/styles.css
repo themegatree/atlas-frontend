@@ -1153,8 +1153,10 @@ progress {
   .card {
     box-shadow: 3 6px 10px 0 rgba(0,0,0,0.2);
     transition: 0.4s;
-    width: 40%;
-    margin-left: 270px;
+    width: 30%;
+    margin-left: 320px;
+    text-decoration: none;
+    margin-block: 30px;
    
   }
   .card:hover {
@@ -1163,7 +1165,7 @@ progress {
   }
   
   .container {
-    padding: 2px 16px;
+    padding: 5px 18px;
 
  
   }  

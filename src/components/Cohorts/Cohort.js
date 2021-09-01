@@ -9,17 +9,20 @@ const Cohort = (props) => {
   let {  url } = useRouteMatch();
 
   return (
-      <div className="card">
-      <div className="col-md" id= {props.cohort.id} >
+       <a href = {`${url}/${props.cohort.id}`} className="card">
+       <div className="col-md" id= {props.cohort.id} >
       <p data-testid="name">Name: {props.cohort.name}</p>
       <p  data-testid="date" >Start Date: {date()}</p>
-      <Router>
+   
+
+      {/* <Router>
      <li className="link" data-testid="link">
        <Link data-testid="link" id="link" to={`${url}/${props.cohort.id}`}>View details »</Link>
       </li>
-      </Router>
+      </Router> */}
       </div>
-    </div> 
+       </a>
+          
   )
 }
 
