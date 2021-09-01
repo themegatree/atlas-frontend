@@ -44,4 +44,12 @@ describe("Dashboard", function() {
     cy.get("#ChitterPercentage").should("contain", "80%")
   })
 
+  it('Displays chartGrid in row while on desktop', () => {
+    cy.get('.graphGrid').should('have.css', 'flex-direction', 'row')
+	})
+
+	it("Displays chartGrid in a column when on mobile", function() {
+		cy.viewport("iphone-xr")
+    cy.get('.graphGrid').should('have.css', 'flex-direction', 'column')
+	})
 })
