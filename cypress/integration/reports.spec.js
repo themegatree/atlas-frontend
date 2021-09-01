@@ -62,7 +62,7 @@ describe("Reports", function() {
         cy.visit('/cohorts/1/reports')
         cy.get("#previewPDF").click()
         cy.wait(500)
-        cy.get('body').click(10,100)
+        cy.get('#footer').click()
         cy.get('#reportIframe').should('not.exist')
     })
 

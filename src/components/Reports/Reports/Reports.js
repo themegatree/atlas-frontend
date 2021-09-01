@@ -38,13 +38,13 @@ class Reports extends Component {
     }
     createPdf = () => {
     const pdf = new jsPDF('p', 'pt', 'letter');
-        pdf.html(document.querySelector("#test2"), {
+        pdf.html(document.querySelector("#content"), {
             callback: function (pdf) {
                 const iframe = document.createElement('iframe');
-                iframe.setAttribute('style', 'position:absolute;top:10%;left:10%;height:80%; width:80%');
+                iframe.setAttribute('style', 'position:relative; height:500px; width:80%');
                 iframe.setAttribute('id','reportIframe')
-                document.body.appendChild(iframe);
                 iframe.src = pdf.output('datauristring');
+                document.getElementById('iframe').appendChild(iframe);
             }
         }
     );
@@ -52,7 +52,8 @@ class Reports extends Component {
     render() {
         return(
             <div>
-                <div id='test2'>
+                <div className='iframeContainer' id='iframe'></div>
+                <div id='content'>
                     <ReportHeader name={this.state.reports.cohortName} id={this.state.reports.cohortId} size={this.state.reports.cohortSize}/>
                     <div className="graphGrid">
                         <div className="graph"><Doughnut id="genderDoughnut" data={buildData(this.state.reports.gender, "number")} options={doughnutChartOptions('Gender Distribution')}/></div>
@@ -63,9 +64,7 @@ class Reports extends Component {
                     <Report name="background" heading="Background Data" data={this.state.reports.background}/>
                     <Report name="challenge" heading="Student Challenge Completion" data={this.state.reports.challenges}/>
                 </div>
-                <div>
-                    <button id="previewPDF" onClick={this.createPdf}>PDF</button>
-                </div>
+                <button id="previewPDF" onClick={this.createPdf}>Download PDF</button>
             </div>
         )
     }
