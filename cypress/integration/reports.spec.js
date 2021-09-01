@@ -73,4 +73,10 @@ describe("Reports", function() {
     it('Displays chartGrid in row while on desktop', () => {
         cy.get('.graphGrid').should('have.css', 'flex-direction', 'row')
     })
+
+    it('Displays chartGrid in column while on mobile', () => {
+        cy.viewport('iphone-xr')
+        cy.get('.graphGrid').should('have.css', 'flex-direction', 'column')
+    })
+    
 })
