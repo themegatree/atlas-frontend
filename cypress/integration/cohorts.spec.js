@@ -19,4 +19,10 @@ describe("Cohorts", function() {
     cy.get('#1').should("contain", "MOCK name");
     cy.get('#1').should("contain", "MOCK date");
   })
+  
+  it("Display the individual cohort page when link is clicked", function() {
+    cy.visit('/cohorts');
+    cy.get('#link').click({force: true});
+    cy.url().should("contain", "cohorts/1")
+  })
 })

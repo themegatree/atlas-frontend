@@ -8,7 +8,7 @@ const Cohort = (props) => {
   let { url } = useRouteMatch();
 
   return (
-      <a href = {`${url}/${props.cohort.id}`} className="card">
+      <a data-testid="link" id="link" href = {`${url}/${props.cohort.id}`} className="card">
         <div className="col-md" id= {props.cohort.id} >
           <p data-testid="name">Name: {props.cohort.name}</p>
           <p data-testid="date" >Start Date: {date()}</p>
