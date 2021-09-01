@@ -5,7 +5,8 @@ import data from '../__mocks__/dashboard-data'
 
 jest.mock('react-chartjs-2', () => ({
     Doughnut: () => null,
-    Bar: () => null
+    Bar: () => null,
+    Line: () => null
   }))
 
 beforeEach(() => {

@@ -72,6 +72,16 @@
           "type": "Rock Paper Scissors",
           "percentage": "100"
         }
+      ],
+      "fileUploads": [
+        {
+          "type": "Self Assessment",
+          "uploads": [17,13,6,12,10,12,2] 
+        },
+        {
+          "type": "Module Challenges",
+          "uploads": [4,5,2,3,2,1,1] 
+        }
       ]
   }
 }

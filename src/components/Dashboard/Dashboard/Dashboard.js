@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { Doughnut, Bar } from "react-chartjs-2";
+import { Doughnut, Bar, Line } from "react-chartjs-2";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import DashboardElement from "../DashboardElement/DashboardElement"
 import buildData from "./buildData";
+import buildLineData from "../Charts/Line/buildLineData"
 import doughnutChartOptions from "./doughnutChartOptions"
 import barChartOptions from "./barChartOptions"
+import lineChartOptions from "../Charts/Line/lineChartOptions"
 import "./Dashboard.css"
 
 class Dashboard extends Component {
@@ -16,7 +18,11 @@ class Dashboard extends Component {
                 cohortsTotal: null,
                 gender: [],
                 background: [],
-                challenges: []
+                challenges: [],
+                fileUploads:[
+                    {type: "Module Challenges"},
+                    {type: "Self Assessment"}
+                ]
             }
         }
     }
@@ -35,6 +41,7 @@ class Dashboard extends Component {
                     <div className="graph"><Doughnut id="genderDoughnut" data={buildData(this.state.dashboard.gender, "number")} options={doughnutChartOptions("Gender Distribution")}/></div>
                     <div className="graph"><Doughnut id="backgroundDoughnut" data={buildData(this.state.dashboard.background, "number")} options={doughnutChartOptions("Background Distribution")}/></div>
                     <div className="graph"><Bar id="challengeBar" data={buildData(this.state.dashboard.challenges, "percentage")} options={barChartOptions("Challange Progress")}/></div>
+                    <div className="graph"><Line id="fileUploadLine" data={buildLineData(this.state.dashboard.fileUploads)} options={lineChartOptions("Files Uploaded this Week")}/></div>
                 </div>
                 <DashboardElement name="gender" heading="Gender Distribution" data={this.state.dashboard.gender}/>
                 <DashboardElement name="background" heading="Background Data" data={this.state.dashboard.background}/>
