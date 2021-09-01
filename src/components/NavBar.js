@@ -46,7 +46,7 @@ const NavBar = () => {
               <Reports />
             </Route>
             <Route exact path='/cohorts' component={CohortsContainer}/>
-            <Route path="/students">
+            <Route exact path="/students">
               <Students />
             </Route>
             </Switch>
