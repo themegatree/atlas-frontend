@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import '../../assets/css/styles.css'
 
 class Upload extends Component {
 	constructor(props) {
@@ -61,27 +62,32 @@ class Upload extends Component {
 
 	render() {
 		return (
-			<div>
-				<input id="choose-file" type="file" accept=".csv" name="upload" onChange={this.onFileChange} />
-				<label htmlFor="assessment-type">Assessment Type</label>
-				<select
-					value={this.state.assessmentType}
-					name="assessmentType"
-					id="assessmentType"
-					onChange={this.setAssessmentType}
-				>
-					<option value="selfAssessment">Self Assessment</option>
-					<option value="moduleChallenge">Module Challenge</option>
-				</select>
-				<button id="upload" onClick={this.onFileUpload}>
+			<div id="card">
+				<section className="page-section portfolio" id="portfolio">
+					<div className="container">
+						<h2 id="cohorts-list" className="page-section-heading text-center text-uppercase text-secondary mb-0">File Upload</h2>
+						<div className="divider-custom">
+							<div className="divider-custom-line"></div>
+							<div className="divider-custom-icon"><i className="fas fa-star"></i></div>
+							<div className="divider-custom-line"></div>
+						</div>
+					</div>
+
+					<div className="form-control-sm">
+										<input className="form-control" id="choose-file" type="file" accept=".csv" name="upload" onChange={this.onFileChange} />
+				<button className="btn btn-secondary" id="upload" onClick={this.onFileUpload}>
 					Upload
 				</button>
+					</div>
+
 				<br />
 				 <div id="errors">
-                {this.state.errors.map((error, i) => <p key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
+                {this.state.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
             </div>
 				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
+				</section>
 			</div>
+			
 		);
 	}
 }
