@@ -1157,6 +1157,8 @@ progress {
     margin-left: 320px;
     text-decoration: none;
     margin-block: 30px;
+    padding-top:20px;
+    padding-bottom: 5px;
    
   }
   .card:hover {
@@ -1165,11 +1167,11 @@ progress {
   }
   
   .container {
-    padding: 5px 18px;
+     padding: 10px 20px;
 
  
   }  
-
+ 
   .col-md-1 {
     flex: 0 0 auto;
     width: 8.33333333%;
