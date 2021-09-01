@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 describe("Cohorts", function() {
   beforeEach(function() {
     cy.intercept("http://localhost:5000/api/cohorts", { fixture: 'cohorts.json' })

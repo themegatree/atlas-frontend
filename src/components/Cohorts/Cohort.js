@@ -9,14 +9,14 @@ const Cohort = (props) => {
   let {  url } = useRouteMatch();
 
   return (
-      <div className="row">
-        <div className="col-md" id= {props.cohort.id} >
+      <div className="card">
+      <div className="col-md" id= {props.cohort.id} >
       <p data-testid="name">Name: {props.cohort.name}</p>
       <p  data-testid="date" >Start Date: {date()}</p>
       <Router>
-          <li className="btn btn-secondary" data-testid="button">          
-          <Link data-testid="link" id="link" to={`${url}/${props.cohort.id}`}>View details »</Link>
-        </li>
+     <li className="link" data-testid="link">
+       <Link data-testid="link" id="link" to={`${url}/${props.cohort.id}`}>View details »</Link>
+      </li>
       </Router>
       </div>
     </div> 
