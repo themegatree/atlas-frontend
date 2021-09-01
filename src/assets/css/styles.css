@@ -1146,10 +1146,6 @@ progress {
     width: 16.6666666667%;
   }
 
-  /* .col-md-auto {
-    flex: 0 0 auto;
-    width: auto;
-  } */
   .card {
     box-shadow: 3 6px 10px 0 rgba(0,0,0,0.2);
     transition: 0.4s;
@@ -1159,17 +1155,15 @@ progress {
     margin-block: 30px;
     padding-top:20px;
     padding-bottom: 5px;
-   
   }
+
   .card:hover {
     box-shadow: 0 10px 17px 0 rgba(0,0,0,0.2);
     background-color: lightblue;
   }
   
   .container {
-     padding: 10px 20px;
-
- 
+    padding: 10px 20px;
   }  
  
   .col-md-1 {
