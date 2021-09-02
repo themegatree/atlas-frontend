@@ -61,34 +61,32 @@ class StudentInfo extends Component{
                     </div>
                 </div>
 
-                {!(this.state.studentData.length === 0) &&
-                    this.state.studentData.ModuleChallenges.map((challenge, index) => (
-                        <div className="grid-container">
-                            <div className="grid-item">
-                                <p id={`challengeName-${index}`}>{challenge.challengeName}</p>
-                            </div>
-                            <div className="grid-item">
-                                <p id={`language-${index}`}>{challenge.language}</p>
-                            </div>
-                            <div className="grid-item">
-                                <p id={`studentScore-${index}`}>{challenge.studentScore}</p>
-                            </div>
-                            <div className="grid-item">
-                                <p id={`coachScore-${index}`}>{challenge.coachScore}</p>
-                            </div>
-                            <div className="grid-item">
-                                <p id={`dueDate-${index}`}>{challenge.dueDate.slice(0, 10)}</p>
-                            </div>
-
-                            <div className="grid-item">          
-                                {challenge.submissionDate.length > 0 ? 
-                                    <p id={`submissionDate-${index}`}>{challenge.submissionDate.slice(0, 10)}</p> : 
-                                    <p id={`submissionDate-${index}`}>Not submitted</p>
-                                }
-                            </div>
+                {this.state.studentData.ModuleChallenges.map((challenge, index) => (
+                    <div className="grid-container">
+                        <div className="grid-item">
+                            <p id={`challengeName-${index}`}>{challenge.challengeName}</p>
                         </div>
-                    ))
-                }
+                        <div className="grid-item">
+                            <p id={`language-${index}`}>{challenge.language}</p>
+                        </div>
+                        <div className="grid-item">
+                            <p id={`studentScore-${index}`}>{challenge.studentScore}</p>
+                        </div>
+                        <div className="grid-item">
+                            <p id={`coachScore-${index}`}>{challenge.coachScore}</p>
+                        </div>
+                        <div className="grid-item">
+                            <p id={`dueDate-${index}`}>{challenge.dueDate.slice(0, 10)}</p>
+                        </div>
+
+                        <div className="grid-item">          
+                            {challenge.submissionDate.length > 0 ? 
+                                <p id={`submissionDate-${index}`}>{challenge.submissionDate.slice(0, 10)}</p> : 
+                                <p id={`submissionDate-${index}`}>Not submitted</p>
+                            }
+                        </div>
+                    </div>
+                ))}
             </div>
         )
     }
