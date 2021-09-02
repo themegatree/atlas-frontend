@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import '../../assets/css/styles.css'
 import './upload.css'
 
+const colours = {
+  success: "green",
+  failure: "red"
+}
+
 class Upload extends Component {
 	constructor(props) {
 		super(props);
@@ -13,14 +18,6 @@ class Upload extends Component {
 			color          : '',
 			invalid		   : ''
 		};
-	};
-
-	setTheColor() {
-		if (this.state.response.status === 'success') {
-			this.setState({color: 'green'});
-		} else {
-			this.setState({color: 'red'});
-		}
 	};
 
 	onFileChange = event => {
@@ -52,8 +49,10 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ response: data.response });
-				this.setTheColor();
+				this.setState({ 
+				response: data.response, 
+				color: colours[data.response.status]
+				})
 			});
 		}
 		else{
@@ -89,7 +88,6 @@ class Upload extends Component {
 				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
 				</section>
 			</div>
-			
 		);
 	}
 }
