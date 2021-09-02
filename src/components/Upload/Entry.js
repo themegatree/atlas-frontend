@@ -7,7 +7,7 @@ class Entry extends Component{
       data: this.props.data,
       id: this.props.id,
       check: false,
-      errors: this.props.data.errors.split(","),
+      errors: this.props.data.errors.split("~~~"),
       date: new Date(this.props.data.createdAt).toString().substr(0,24)
     }
   }
