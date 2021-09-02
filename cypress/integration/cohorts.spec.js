@@ -4,11 +4,7 @@ describe("Cohorts", function() {
   beforeEach(function() {
     cy.intercept("http://localhost:5000/api/cohorts", { fixture: 'cohorts.json' })
   })
-  it("Shows the header", function() {
-    cy.visit('/cohorts');
-    cy.get('#header').should("contain", "Digital Futures");
-  })
-
+ 
     it("Shows the cohort list header", function() {
     cy.visit('/cohorts');
     cy.get('#cohorts-list').should("contain", "Cohort List");
