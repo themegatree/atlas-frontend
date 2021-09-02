@@ -29,9 +29,7 @@ class StudentInfo extends Component{
     render(){
         return (
             <div id="studentInfoDiv">
-                <p />
                 <img alt="Github Profile Not Found" id="githubImage" src={this.state.avatar_Url}></img>
-                <p />
                 <p id="id"><b>ID:</b> {this.props.id}</p>
                 <p id="firstName"><b>First Name:</b> {this.state.studentData.firstName}</p>
                 <p id="lastName"><b>Last Name:</b> {this.state.studentData.lastName}</p>
