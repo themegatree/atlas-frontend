@@ -3099,6 +3099,18 @@ textarea.form-control-lg {
   border-color: #2c3e50;
 }
 
+.btn-uploadSubmit {
+  color: #fff;
+  background-color: #2c3e50;
+  border-color: #2c3e50;
+  position: relative;
+  top: -3px;
+}
+.btn-uploadSubmit:hover {
+  color: #fff;
+  background-color: #253544;
+  border-color: #233240;
+}
 .btn-success {
   color: #fff;
   background-color: #198754;
