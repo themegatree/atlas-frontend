@@ -7,6 +7,8 @@ const Cohort = (props) => {
     
   let { url } = useRouteMatch();
 
+  const reloadPage = () => window.location.reload(false);
+
   return (
       <a data-testid="link" id="link" href = {`${url}/${props.cohort.id}`} className="card">
         <div className="col-md" id= {props.cohort.id} >
