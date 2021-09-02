@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 describe("Cohorts", function() {
   beforeEach(function() {
     cy.intercept("http://localhost:5000/api/cohorts", { fixture: 'cohorts.json' })
@@ -16,5 +18,11 @@ describe("Cohorts", function() {
     cy.visit('/cohorts');
     cy.get('#1').should("contain", "MOCK name");
     cy.get('#1').should("contain", "MOCK date");
+  })
+  
+  it("Display the individual cohort page when link is clicked", function() {
+    cy.visit('/cohorts');
+    cy.get('#link').click({force: true});
+    cy.url().should("contain", "cohorts/1")
   })
 })

@@ -46,11 +46,11 @@ test('Renders Cohort List with three elements', async () => {
   const cohortThirdDateElement = screen.getAllByTestId("date")[2];
   expect(cohortThirdDateElement).toHaveTextContent("Start Date: 2021-03-12")
 
-  const cohortFirstButtonElement = screen.getAllByTestId("button")[0];
+  const cohortFirstButtonElement = screen.getAllByTestId("link")[0];
   expect(cohortFirstButtonElement).toBeInTheDocument();
-  const cohortSecondButtonElement = screen.getAllByTestId("button")[1];
+  const cohortSecondButtonElement = screen.getAllByTestId("link")[1];
   expect(cohortSecondButtonElement).toBeInTheDocument();
-  const cohortThirdButtonElement = screen.getAllByTestId("button")[2];
+  const cohortThirdButtonElement = screen.getAllByTestId("link")[2];
   expect(cohortThirdButtonElement).toBeInTheDocument();
 
 });
