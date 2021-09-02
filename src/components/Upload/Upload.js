@@ -9,14 +9,14 @@ class Upload extends Component {
 		this.state = {
 			selectedFile   : null,
 			assessmentType : 'selfAssessment',
-			errors         : [],
+			response       : { status: "", errors : [] },
 			color          : '',
 			invalid		   : ''
 		};
 	};
 
 	setTheColor() {
-		if (this.state.errors[0] === 'Updated the database successfully.') {
+		if (this.state.response.status === 'success') {
 			this.setState({color: 'green'});
 		} else {
 			this.setState({color: 'red'});
@@ -52,7 +52,7 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ errors: data.response});
+				this.setState({ response: data.response });
 				this.setTheColor();
 			});
 		}
@@ -83,7 +83,8 @@ class Upload extends Component {
 
 				<br />
 				 <div id="errors">
-                {this.state.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
+                <p className="h4" id={`status`} style={{color:this.state.color}}>{this.state.response.status}</p>
+                {this.state.response.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
             </div>
 				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
 				</section>
