@@ -1,4 +1,3 @@
-import { flushSync } from "react-dom"
 
 describe("Student Info", function() {
     beforeEach(function() {
@@ -14,10 +13,10 @@ describe("Student Info", function() {
 
      it("Can Get Students in Cohort", function() {
         cy.visit('/cohorts/1')
-        cy.get('#1').should('contain', 'Mike') 
-        cy.get('#1').should('contain', 'Testerson') 
-        cy.get('#2').should('contain', 'Mike Two') 
-        cy.get('#2').should('contain', 'Testerson Two') 
+        cy.get('#1').should('contain', 'Fred') 
+        cy.get('#1').should('contain', 'Marshall') 
+        cy.get('#2').should('contain', 'Betty') 
+        cy.get('#2').should('contain', 'Clark') 
 
     })
 
@@ -30,7 +29,7 @@ describe("Student Info", function() {
 
     it("Can go to Cohort Report Page", function() {
         cy.visit('/cohorts/1')
-        cy.get('#1reportLink').click({force:true})
+        cy.get('#reportLink').click({force:true})
         cy.url().should("contain", "cohorts/1/reports")
     })
 })

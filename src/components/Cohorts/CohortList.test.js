@@ -7,7 +7,7 @@ jest.mock('react-router-dom', () => ({
   useParams: () => ({
     cohortId: 'cohort-id1',
   }),
-  useRouteMatch: () => ({ url: '/cohorts/cohortID' }),
+  useRouteMatch: () => ({ url: '/cohorts/cohortID/' }),
 }));
 
 test('Renders Cohort List with three elements', async () => {

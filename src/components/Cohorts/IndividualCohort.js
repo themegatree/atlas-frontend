@@ -23,31 +23,24 @@ class IndividualCohort extends Component {
       return (
         <div>
           <h1>Cohort's {this.state.cohort.id} Information </h1>
-           <div>
-            <p  data-testid= "name" id="name">Cohort Name: {this.state.cohort.name}</p>
-            <p data-testid= "startDate" id="startDate">Start Date: {this.state.cohort.startDate}</p>
+            <p id="name">Cohort Name: {this.state.cohort.name}</p>
+            <p id="startDate">Start Date: {this.state.cohort.startDate}</p>
             <p id="cohortSize">Cohort Size: {this.state.cohort.cohortSize}</p>
             <p id="leadCoach">Lead Coach: {this.state.cohort.leadCoach}</p>
 
-           </div>
             <div>
               <h3> List of Students</h3>
-              {this.state.cohort.Students.map( (student,index) => {
-              return student.cohortId === this.state.cohort.id ?
-              <div className="div_style" id="studentList">
-              <a className="link"  id={student.id} href ={`/students/${student.id}`} >
-                <p id="firstName"> First Name:{student.firstName} </p>
-                <p id="lastName"> Last Name:{student.lastName} </p>
+              {this.state.cohort.Students.map(  (student,index) =>  {
+             return  <div key={index} data-testid="studentList" className="div_style" id="studentList">
+                <a className="link"  id={student.id} href ={`/students/${student.id}/`} >
+                <p data-testid="firstName" id="firstName"> First Name:{student.firstName} </p>
+                <p data-testid="lastName" id="lastName"> Last Name:{student.lastName} </p>
               </a>
-              <a className="link" id={`${student.cohortId}reportLink`} href ={`/cohorts/${student.cohortId}/reports`} >
+              <a data-testid="report" className="link" id={"reportLink"} href ={`/cohorts/${student.CohortId}/reports/`} >
                 <p > Go To Report </p>
               </a>
               </div>
-              :
-              <h5> End of Student List</h5>
-              }
-              )}
-              
+              })}   
               
             </div>
         </div>

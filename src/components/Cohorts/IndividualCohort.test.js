@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import IndividualCohort from './IndividualCohort.js'
-
+import data from './__mocks__/individual-cohort-data.js'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
@@ -10,22 +10,26 @@ jest.mock('react-router-dom', () => ({
   useRouteMatch: () => ({ url: '/IndividualCohort/cohortID' }),
 }));
 
-test('Renders Cohort List with three elements', async () => {
-  const cohort = {
-  "id": "1",
-  "name": "Cohort 1",
-  "startDate": "2021-02-28",
-  "cohortSize": "2",
-  "leadCoach": "Ed",
-  
-}
-  render(<IndividualCohort cohorts={cohort} />);   
+beforeEach(() => {
+  global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
+})
+
+test('Check Cohorts details', async () => {
+
+  render(<IndividualCohort />);   
 
   const headerElement = await screen.findByText(/Cohort's Information/i)
   expect(headerElement).toBeInTheDocument();
 
-    const nameElement = await screen.findByTestId("name")
-    expect(nameElement).toHaveTextContent("Cohort Name: ")
+  const nameElement = await screen.findByText("Cohort Name: Cohort 1")
+  expect(nameElement).toBeInTheDocument();
+
+  const dateElement = await screen.findByText("Start Date: 2021-02-28")
+  expect(dateElement).toBeInTheDocument();
+
+  const leadCoachElement = await screen.findByText("Start Date: 2021-02-28")
+  expect(leadCoachElement).toBeInTheDocument();
+
 });
 
 

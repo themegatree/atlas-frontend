@@ -4,12 +4,9 @@ import StudentInfo from './Students/StudentProfile/StudentInfo.js';
 import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard/Dashboard";
 import Students from "./Students/StudentList/Students.js"
-<<<<<<< HEAD
 import History from "./Upload/History.js"
 import Header from './Header.js'
-=======
-import  IndividualCohort from './Cohorts/IndividualCohort.js';
->>>>>>> d0a6572 (fixed rebase conflict)
+import IndividualCohort from './Cohorts/IndividualCohort.js';
 
 import '../assets/css/styles.css'
 
@@ -22,13 +19,14 @@ import {
 } from 'react-router-dom';
 
 
+
 const NavBar = () => {
   return (
       <Router>
         <div className='navbar navbar-expand-lg bg-secondary text-uppercase fixed-top' id='mainNav'>
         <div className='container'>
         <button className='navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded' type='button' data-bs-toggle='collapse' data-bs-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation'>
-        Menu 
+        Menu
         <i className='fas fa-bars'></i>
                 </button>
           <div className='collapse navbar-collapse' id='navbarResponsive'>
@@ -41,6 +39,9 @@ const NavBar = () => {
             </li>
             <li className='nav-item mx-0 mx-lg-1'>
               <Link className='nav-link py-3 px-0 px-lg-3 rounded' to="/assessments/upload">Assessments Upload</Link>
+            </li>
+            <li className='nav-item mx-0 mx-lg-1'>
+              <Link className='nav-link py-3 px-0 px-lg-3 rounded' to="/assessments/upload/history">Upload History</Link>
             </li>
           </ul>
           </div>
@@ -55,7 +56,7 @@ const NavBar = () => {
               <Reports />
             </Route>
             <Route exact path='/cohorts' component={CohortsContainer}/>
-            <Route path="/students">
+            <Route exact path="/students">
               <Students />
             </Route>
             </Switch>
@@ -63,18 +64,17 @@ const NavBar = () => {
               <Route exact path='/students/:id'>
                 <StudentInfo />
               </Route>
+              <Route path="/assessments/upload/history">
+                <History />
+              </Route>
             <Route path="/assessments/upload">
               <Upload />
             </Route>
             <Route path="/dashboard">
               <Dashboard />
             </Route>
-<<<<<<< HEAD
-            <Route exact path="/cohorts/:id">
+            <Route exact path="/cohorts/:id" component={IndividualCohort}>
             </Route>
-=======
-            <Route exact path="/cohorts/:id" component={IndividualCohort}/>
->>>>>>> d0a6572 (fixed rebase conflict)
           </Switch>
       </Router>
   );
