@@ -2,7 +2,7 @@ import CohortsContainer from './Cohorts/CohortsContainer.js'
 import Reports from './Reports/Reports/Reports'
 import StudentInfo from './Students/StudentProfile/StudentInfo.js';
 import Upload from "./Upload/Upload.js"
-import Dashboard from "./Dashboard/Dashboard.js";
+import Dashboard from "./Dashboard/Dashboard/Dashboard";
 import Students from "./Students/StudentList/Students.js"
 
 import '../assets/css/styles.css'
@@ -16,9 +16,8 @@ import {
 } from 'react-router-dom';
 
 
-function NavBar() {
+const NavBar = () => {
   return (
-    <div >
       <Router>
         <div className='navbar navbar-expand-lg bg-secondary text-uppercase fixed-top' id='mainNav'>
         <div className='container'>
@@ -65,8 +64,6 @@ function NavBar() {
             </Route>
           </Switch>
       </Router>
-
-    </div>
   );
 }
 

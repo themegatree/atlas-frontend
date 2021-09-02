@@ -1,4 +1,4 @@
-describe("Students - display: ", function() {
+describe("Students - display:", function() {
   beforeEach(function() {
     cy.intercept("http://localhost:5000/api/students", { fixture: 'students.json' })
   })

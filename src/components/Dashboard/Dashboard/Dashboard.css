@@ -5,7 +5,6 @@
     padding: 0%;
     margin-left: 10%;
     margin-right: 10%;
-    flex-direction: row;
 }
 
 .graph {
@@ -13,10 +12,10 @@
 } 
 
 @media (max-width: 900px) {
-    .graphGrid {
-      flex-direction: column;
-    }
-    .graph {
-      width: 100%;
-    }
+  .graphGrid {
+    flex-direction: column;
   }
+  .graph {
+    width: 100%;
+  }
+} 

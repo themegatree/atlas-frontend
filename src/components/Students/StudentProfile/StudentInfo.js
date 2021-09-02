@@ -37,7 +37,7 @@ class StudentInfo extends Component{
                 <p id="lastName"><b>Last Name:</b> {this.state.studentData.lastName}</p>
                 <p id="github"><b>Github Username:</b> {this.state.studentData.githubUsername}</p>
                 <p id="email"><b>Email:</b> {this.state.studentData.email}</p>
-                
+
                 <h3 id="challengesHeading">Challenges</h3>
 
                 <div className="grid-container">
@@ -60,7 +60,7 @@ class StudentInfo extends Component{
                         <h5>Submission Date</h5>
                     </div>
                 </div>
-  
+
                 {!(this.state.studentData.length === 0) &&
                     this.state.studentData.ModuleChallenges.map((challenge, index) => (
                         <div className="grid-container">

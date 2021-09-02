@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import DashboardElement from './DashboardElement'
-import data from './__mocks__/dashboard-element-data'
+import data from '../__mocks__/dashboard-element-data'
 
 test('Renders Heading', async () => {
     render(<DashboardElement heading="test heading" data={data} name="test"/>)

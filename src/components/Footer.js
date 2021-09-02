@@ -1,9 +1,9 @@
 import '../assets/css/styles.css'
 import React from "react";
 
-function Footer() {
+const Footer = () => {
   return (
-    <div >
+    <div id='footer'>
         <footer className="footer text-center">
             <div className="container">
                 <div className="row">

@@ -2,11 +2,10 @@ import '../assets/css/styles.css'
 import React from "react";
 import dfImage from '../assets/img/DF_Logo.svg'
 
-function Header() {
+const Header = () => {
   const currDate = new Date().toLocaleDateString();
 
   return (
-    <div >
     <header className="masthead bg-primary text-white text-center">
                   <div className="container d-flex align-items-center flex-column">
                 <img className="masthead-avatar mb-5" src={dfImage} alt="Digital Futures Logo" />
@@ -19,7 +18,6 @@ function Header() {
                 <p className="masthead-subheading font-weight-light mb-0"> {currDate} </p>
             </div>
             </header>
-    </div>
   );
 }
 

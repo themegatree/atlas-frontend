@@ -3,14 +3,12 @@ import {useRouteMatch, Link, BrowserRouter as Router,} from "react-router-dom";
 
 const Cohort = (props) => {
 
-  function date(){
-    return props.cohort.startDate.substring(0,10)
-  }
+  const date = () =>  props.cohort.startDate.substring(0,10)
+  
 
   let {  url } = useRouteMatch();
 
   return (
-    <div>
       <div className="row">
         <div className="col-md" id= {props.cohort.id} >
       <p data-testid="name">Name: {props.cohort.name}</p>
@@ -22,8 +20,6 @@ const Cohort = (props) => {
       </Router>
       </div>
     </div> 
-      <br/>
-    </div>
   )
 }
 
