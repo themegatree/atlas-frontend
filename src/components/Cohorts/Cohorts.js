@@ -18,7 +18,6 @@ class Cohorts extends Component {
   render() {
     return(
       <div>
-        <br />
         <CohortList cohorts={this.state.cohorts} />
       </div>
     )

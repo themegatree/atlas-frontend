@@ -1,7 +1,5 @@
 .App {
   text-align: center;
-  /*margin-left: auto;
-  margin-right: auto;*/
 }
 
 .App-logo {
@@ -44,19 +42,23 @@
   width: 150px;
 }
 
+#challengesHeading {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  display: grid;
+  margin: 0 auto;
+  width: 1080px;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+
+.grid-item {
+  width: 180px;
+  text-align: centre;
+}
+
 .error {
   color:red
 }
-
-table {
-  border-collapse: collapse;
-  border: 4px solid black;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-th, td {
-  border: solid black;
-  padding: 6px;
-}
-

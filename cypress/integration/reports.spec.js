@@ -69,4 +69,8 @@ describe("Reports", function() {
     it("Displays three charts", function() {
         cy.get("canvas").should("be.visible")
     })
+
+    it('Displays chartGrid in row while on desktop', () => {
+        cy.get('.graphGrid').should('have.css', 'flex-direction', 'row')
+    })
 })
