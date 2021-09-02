@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { useParams } from "react-router-dom";
 
 
-const GetIndividualCohort= () => {
+const GetIndividualCohort= (props) => {
   return (<IndividualCohort id={useParams().id}/>)
 }
 class IndividualCohort extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cohort:{},
+      cohort:{Students:[]},
      };
   }
-  
+
  async componentDidMount() {
       await fetch(`${process.env.REACT_APP_API_URL}/api/cohorts/${this.props.id}`)
       .then(res => res.json())
-      .then(data => this.setState({cohort: data}))      
+      .then(data => this.setState({cohort: data.cohort}))      
   }
 
  render(){
@@ -29,6 +29,18 @@ class IndividualCohort extends Component {
             <p id="cohortSize">Cohort Size: {this.state.cohort.cohortSize}</p>
             <br></br>
             <p id="leadCoach">Lead Coach: {this.state.cohort.leadCoach}</p>
+
+            <div>
+              <h3> List of Students</h3>
+              {this.state.cohort.Students.map( (student,index) => 
+              <div>
+                <p id="firstName"> First Name:{student.firstName} </p>
+                <p id="lastName"> Last Name:{student.lastName} </p>,
+              </div>
+              )}
+              
+              
+            </div>
         </div>
     )
 }
