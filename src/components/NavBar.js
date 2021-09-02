@@ -47,7 +47,9 @@ const NavBar = () => {
 </div>
 
           <Switch>
-            <Route exact path ="/" render={ ( props ) => ( props.location.pathname === "/") && <Header /> }></Route>
+          <Route exact path="/"> 
+         <Header />
+          </Route>    
             <Route path='/cohorts/:cohortId/reports'>
               <Reports />
             </Route>
