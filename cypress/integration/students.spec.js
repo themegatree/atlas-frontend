@@ -22,3 +22,14 @@ it("Last Name Alpabetical Order", function() {
   cy.get("h4:first").should("contain", "PERSON")
 })
 })
+
+describe("Student - Link buttin works", function() {
+  beforeEach( function() {
+    cy.intercept("http://localhost:5000/api/students", { fixture: 'students.json' })
+  })
+  it("Links to Student Page", function() {
+    cy.visit("/students")
+    cy.get("#button-0").click({force: true})
+    cy.get("#id").should("contain", "3")
+  })
+})
