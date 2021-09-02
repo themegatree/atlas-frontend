@@ -5,6 +5,7 @@ import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard/Dashboard";
 import Students from "./Students/StudentList/Students.js"
 import History from "./Upload/History.js"
+import Header from './Header.js'
 
 import '../assets/css/styles.css'
 
@@ -46,6 +47,7 @@ const NavBar = () => {
 </div>
 
           <Switch>
+            <Route path ="/" render={ ( props ) => ( props.location.pathname === "/") && <Header /> }></Route>
             <Route path='/cohorts/:cohortId/reports'>
               <Reports />
             </Route>
