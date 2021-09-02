@@ -1,5 +1,5 @@
 import React from "react";
-import {useRouteMatch, Link, BrowserRouter as Router,} from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
 const Student = (props) => {
 
