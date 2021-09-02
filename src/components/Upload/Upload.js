@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import '../../assets/css/styles.css'
+import './upload.css'
 
 class Upload extends Component {
 	constructor(props) {
