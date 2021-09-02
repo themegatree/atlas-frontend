@@ -22,21 +22,30 @@ class IndividualCohort extends Component {
  render(){
       return (
         <div>
-            <p id="name">Cohort Name: {this.state.cohort.name}</p>
-            <br></br>
-            <p id="startDate">Start Date: {this.state.cohort.startDate}</p>
-            <br></br>
+          <h1>Cohort's {this.state.cohort.id} Information </h1>
+           <div>
+            <p  data-testid= "name" id="name">Cohort Name: {this.state.cohort.name}</p>
+            <p data-testid= "startDate" id="startDate">Start Date: {this.state.cohort.startDate}</p>
             <p id="cohortSize">Cohort Size: {this.state.cohort.cohortSize}</p>
-            <br></br>
             <p id="leadCoach">Lead Coach: {this.state.cohort.leadCoach}</p>
 
+           </div>
             <div>
               <h3> List of Students</h3>
-              {this.state.cohort.Students.map( (student,index) => 
-              <div>
+              {this.state.cohort.Students.map( (student,index) => {
+              return student.cohortId === this.state.cohort.id ?
+              <div className="div_style" id="studentList">
+              <a className="link"  id={student.id} href ={`/students/${student.id}`} >
                 <p id="firstName"> First Name:{student.firstName} </p>
-                <p id="lastName"> Last Name:{student.lastName} </p>,
+                <p id="lastName"> Last Name:{student.lastName} </p>
+              </a>
+              <a className="link" id={`${student.cohortId}reportLink`} href ={`/cohorts/${student.cohortId}/reports`} >
+                <p > Go To Report </p>
+              </a>
               </div>
+              :
+              <h5> End of Student List</h5>
+              }
               )}
               
               

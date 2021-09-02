@@ -3,7 +3,7 @@
   "id": "1",
   "name": "Cohort 1",
   "startDate": "2021-02-28",
-  "cohortSize": "1",
+  "cohortSize": "2",
   "leadCoach": "Ed",
   "Students": [
    {
@@ -12,15 +12,23 @@
     "lastName": "Testerson",
     "githubUsername": "testname",
     "email": "real@email.com",
-    "cohortID": "1"
+    "cohortId": "1"
    },
+      {
+       "id": "2",
+       "firstName": "Mike Two",
+       "lastName": "Testerson Two",
+       "githubUsername": "testname",
+       "email": "real@email.com",
+       "cohortId": "1"
+      },
    {
-    "id": "2",
-    "firstName": "Mike two",
-    "lastName": "Testerson",
-    "githubUsername": "testname",
-    "email": "real@email.com",
-    "cohortID": "1"
+    "id": "3",
+    "firstName": "Betty ",
+    "lastName": "Dickson",
+    "githubUsername": "bettyname",
+    "email": "real_betty@email.com",
+    "cohortId": "2"
    }
   ]
  }

@@ -74,8 +74,13 @@
     scroll-behavior: smooth;
   }
 }
-#link{
+.link{
   text-decoration: none;
+  color:#066173;
+}
+
+.div_style{
+  padding: 10px;
 }
 body {
   margin: 0;
