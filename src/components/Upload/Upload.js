@@ -3,24 +3,21 @@ import React, { Component } from 'react';
 import '../../assets/css/styles.css'
 import './upload.css'
 
+const colours = {
+  success: "green",
+  failure: "red"
+}
+
 class Upload extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			selectedFile   : null,
 			assessmentType : 'selfAssessment',
-			errors         : [],
+			response       : { status: "", errors : [] },
 			color          : '',
 			invalid		   : ''
 		};
-	};
-
-	setTheColor() {
-		if (this.state.errors[0] === 'Updated the database successfully.') {
-			this.setState({color: 'green'});
-		} else {
-			this.setState({color: 'red'});
-		}
 	};
 
 	onFileChange = event => {
@@ -52,8 +49,10 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ errors: data.response});
-				this.setTheColor();
+				this.setState({ 
+				response: data.response, 
+				color: colours[data.response.status]
+				})
 			});
 		}
 		else{
@@ -83,12 +82,12 @@ class Upload extends Component {
 
 				<br />
 				 <div id="errors">
-                {this.state.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
+                <p className="h4" id={`status`} style={{color:this.state.color}}>{this.state.response.status}</p>
+                {this.state.response.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
             </div>
 				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
 				</section>
 			</div>
-			
 		);
 	}
 }

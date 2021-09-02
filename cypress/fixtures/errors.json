@@ -1,4 +1,8 @@
 {
-    "response": ["Student Score: wrong is invalid, on line 2"]
-
+    "response" : {
+        "status": "failure",
+        "errors": [
+            "Student Score: wrong is invalid, on line 2"
+        ]
+    }
 }
