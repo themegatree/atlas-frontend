@@ -75,7 +75,7 @@ class Upload extends Component {
 
 					<div className="form-control-sm">
 										<input className="form-control" id="choose-file" type="file" accept=".csv" name="upload" onChange={this.onFileChange} />
-				<button className="btn btn-secondary" id="upload" onClick={this.onFileUpload}>
+				<button className="btn btn-uploadSubmit" id="upload" onClick={this.onFileUpload}>
 					Upload
 				</button>
 					</div>
