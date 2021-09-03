@@ -23,13 +23,13 @@ it("Last Name Alpabetical Order", function() {
 })
 })
 
-describe("Student - Link buttin works", function() {
+describe("Student - Link button works", function() {
   beforeEach( function() {
     cy.intercept("http://localhost:5000/api/students", { fixture: 'students.json' })
   })
   it("Links to Student Page", function() {
     cy.visit("/students")
-    cy.get("#button-0").click({force: true})
+    cy.get("a h4").first().click({force: true})
     cy.get("#id").should("contain", "3")
   })
 })
