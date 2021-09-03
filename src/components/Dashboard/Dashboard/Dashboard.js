@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Doughnut, Bar } from "react-chartjs-2";
-import DashboardHeader from "./DashboardHeader";
-import DashboardElement from "./DashboardElement"
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import DashboardElement from "../DashboardElement/DashboardElement"
 import buildData from "./buildData";
+import doughnutChartOptions from "./doughnutChartOptions"
+import barChartOptions from "./barChartOptions"
+import "./Dashboard.css"
 
 class Dashboard extends Component {
     constructor(props) {
@@ -28,12 +31,14 @@ class Dashboard extends Component {
         return(
             <div>
                 <DashboardHeader studentTotal={this.state.dashboard.studentTotal} cohortsTotal={this.state.dashboard.cohortsTotal}/>
-                <Doughnut id="genderDoughnut" data={buildData(this.state.dashboard.gender, "number")} />
+                <div className="graphGrid">
+                    <div className="graph"><Doughnut id="genderDoughnut" data={buildData(this.state.dashboard.gender, "number")} options={doughnutChartOptions("Gender Distribution")}/></div>
+                    <div className="graph"><Doughnut id="backgroundDoughnut" data={buildData(this.state.dashboard.background, "number")} options={doughnutChartOptions("Background Distribution")}/></div>
+                    <div className="graph"><Bar id="challengeBar" data={buildData(this.state.dashboard.challenges, "percentage")} options={barChartOptions("Challange Progress")}/></div>
+                </div>
                 <DashboardElement name="gender" heading="Gender Distribution" data={this.state.dashboard.gender}/>
-                <Doughnut id="backgroundDoughnut" data={buildData(this.state.dashboard.background, "number")}/>
                 <DashboardElement name="background" heading="Background Data" data={this.state.dashboard.background}/>
                 <DashboardElement name="challenge" heading="Student Challenge Completion" data={this.state.dashboard.challenges}/>
-                <Bar id="challengeBar" data={buildData(this.state.dashboard.challenges, "percentage")}/>
             </div>
         )
     }

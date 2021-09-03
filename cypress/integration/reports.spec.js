@@ -51,7 +51,32 @@ describe("Reports", function() {
     it("Displays challenge completion bar chart", function() {
         cy.get("#challengeBar").should("be.visible")
     })
+
+    it("Lets you preview the PDF", function() {
+        cy.visit('/cohorts/1/reports')
+        cy.get("#previewPDF").click()
+        cy.get('#reportIframe').should('be.visible')
+    })
+
+    it("Lets you close the PDF preview", function() {
+        cy.visit('/cohorts/1/reports')
+        cy.get("#previewPDF").click()
+        cy.wait(500)
+        cy.get('#footer').click()
+        cy.get('#reportIframe').should('not.exist')
+    })
+
     it("Displays three charts", function() {
         cy.get("canvas").should("be.visible")
     })
+
+    it('Displays chartGrid in row while on desktop', () => {
+        cy.get('.graphGrid').should('have.css', 'flex-direction', 'row')
+    })
+
+    it('Displays chartGrid in column while on mobile', () => {
+        cy.viewport('iphone-xr')
+        cy.get('.graphGrid').should('have.css', 'flex-direction', 'column')
+    })
+    
 })

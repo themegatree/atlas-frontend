@@ -1,38 +1,34 @@
 import { render, screen } from '@testing-library/react';
-import Body from './BootstrapStyles/Body'
+import Cohorts from './Cohorts.js'
 import data from './__mocks__/cohort-data.js'
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
+  useParams: () => ({
+    cohortId: 'cohort-id1',
+  }),
+  useRouteMatch: () => ({ url: '/cohorts/cohortID' }),
+}));
 
 beforeEach(() => {
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
 })
 
-test('Renders Cohort List Header', async () => {
-    render(<Body/>)
-    const headerElement = await screen.findByText(/COHORT LIST/i)
-    expect(headerElement).toBeInTheDocument();
-})
-
 test('Renders Name Field', async () => {
-    render(<Body />)
+    render(<Cohorts />)
     const nameElement = await screen.findByText(/Name: Mock name/i)
     expect(nameElement).toBeInTheDocument();
 })
 
 
 test('Renders Start Date Field', async () => {
-    render(<Body />)
+    render(<Cohorts />)
     const dateElement = await screen.findByText(/Mock date/i)
     expect(dateElement).toBeInTheDocument();
 })
 
-xtest('Renders Cohort Size -- Still Pending Until Checkboxes', async () => {
-    render(<Body />)
-    const sizeElement = await screen.findByText(/Cohort Size: 20/i)
-    expect(sizeElement).toBeInTheDocument();
-})
-
-test('Renders Button Element', async () => {
-    render(<Body />)
-    const buttonElement = await screen.findByTestId("button");
-    expect(buttonElement).toBeInTheDocument();
+test('Renders Link Element', async () => {
+    render(<Cohorts />)
+    const linkElement = await screen.findByTestId("link")
+    expect(linkElement).toBeInTheDocument();
 })

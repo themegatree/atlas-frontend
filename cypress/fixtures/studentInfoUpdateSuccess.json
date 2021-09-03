@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "student": {
+    "id": "1",
+    "firstName": "Jack",
+    "lastName": "Testerson",
+    "githubUsername": "testname",
+    "email": "real@email.com"
+  }
+}
