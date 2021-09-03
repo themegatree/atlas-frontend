@@ -1,6 +1,6 @@
 import CohortsContainer from './Cohorts/CohortsContainer.js'
 import Reports from './Reports/Reports/Reports'
-import StudentInfo from './Students/StudentProfile/StudentInfo.js';
+import Student from './Students/StudentProfile/Student.js';
 import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard/Dashboard";
 import Students from "./Students/StudentList/Students.js"
@@ -16,7 +16,6 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-
 
 
 const NavBar = () => {
@@ -61,7 +60,7 @@ const NavBar = () => {
             </Switch>
             <Switch>
               <Route exact path='/students/:id'>
-                <StudentInfo />
+                <Student />
               </Route>
               <Route path="/assessments/upload/history">
                 <History />
@@ -72,7 +71,7 @@ const NavBar = () => {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
-            <Route exact path="/cohorts/:id" >
+            <Route exact path="/cohorts/:id">
             </Route>
           </Switch>
       </Router>
