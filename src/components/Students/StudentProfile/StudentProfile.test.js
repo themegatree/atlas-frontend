@@ -1,6 +1,6 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {StudentInfo} from './StudentInfo.js'
+import StudentProfile from './StudentProfile.js'
 import data from './__mocks__/student-info-data.js'
 import updatedData from './__mocks__/student-info-data-update.js'
 import failData from './__mocks__/student-info-fail.js'
@@ -12,7 +12,7 @@ beforeEach(() => {
   
 test('Displays Student Info', async () => {
   render(
-    <StudentInfo />
+    <StudentProfile />
   )
 
   const lastNameElement = await screen.findByText(/Testerson/i);
@@ -30,7 +30,7 @@ test('Displays Student Info', async () => {
 
 test('Update Student Info' , async () => {
   render(
-    <StudentInfo />
+    <StudentProfile />
   )
   
   const firstNameSubmitButton = await screen.findByText(/Change First Name/i)
@@ -62,7 +62,7 @@ test('Update Student Info' , async () => {
 
 test('Fail to update student info', async () => {
   render(
-    <StudentInfo />
+    <StudentProfile/>
   )
 
   const firstNameSubmitButton = await screen.findByText(/Change First Name/i)

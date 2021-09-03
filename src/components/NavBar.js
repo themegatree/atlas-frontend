@@ -1,6 +1,6 @@
 import CohortsContainer from './Cohorts/CohortsContainer.js'
 import Reports from './Reports/Reports/Reports'
-import StudentInfo from './Students/StudentProfile/StudentInfo.js';
+import Student from './Students/StudentProfile/Student.js';
 import Upload from "./Upload/Upload.js"
 import Dashboard from "./Dashboard/Dashboard/Dashboard";
 import Students from "./Students/StudentList/Students.js"
@@ -60,7 +60,7 @@ const NavBar = () => {
             </Switch>
             <Switch>
               <Route exact path='/students/:id'>
-                <StudentInfo />
+                <Student />
               </Route>
               <Route path="/assessments/upload/history">
                 <History />

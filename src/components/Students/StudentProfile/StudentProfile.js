@@ -1,11 +1,6 @@
 import React, { Component} from "react"
-import { useParams } from "react-router-dom";
 
-const GetStudentInfo = () => {
-    return (<StudentInfo id={useParams().id}/>)
-}
-
-class StudentInfo extends Component{
+class StudentProfile extends Component{
 
     constructor(props) {
         super(props)
@@ -104,5 +99,5 @@ class StudentInfo extends Component{
     }
 }
 
-export default GetStudentInfo
-export {StudentInfo}
+
+export default StudentProfile
