@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 import '../../assets/css/styles.css'
+import './upload.css'
+
+const colours = {
+  success: "green",
+  failure: "red"
+}
 
 class Upload extends Component {
 	constructor(props) {
@@ -8,18 +14,10 @@ class Upload extends Component {
 		this.state = {
 			selectedFile   : null,
 			assessmentType : 'selfAssessment',
-			errors         : [],
+			response       : { status: "", errors : [] },
 			color          : '',
 			invalid		   : ''
 		};
-	};
-
-	setTheColor() {
-		if (this.state.errors[0] === 'Updated the database successfully.') {
-			this.setState({color: 'green'});
-		} else {
-			this.setState({color: 'red'});
-		}
 	};
 
 	onFileChange = event => {
@@ -51,8 +49,10 @@ class Upload extends Component {
 		})
 			.then(response => response.json())
 			.then(data => {
-				this.setState({ errors: data.response});
-				this.setTheColor();
+				this.setState({ 
+				response: data.response, 
+				color: colours[data.response.status]
+				})
 			});
 		}
 		else{
@@ -75,19 +75,19 @@ class Upload extends Component {
 
 					<div className="form-control-sm">
 										<input className="form-control" id="choose-file" type="file" accept=".csv" name="upload" onChange={this.onFileChange} />
-				<button className="btn btn-secondary" id="upload" onClick={this.onFileUpload}>
+				<button className="btn btn-uploadSubmit" id="upload" onClick={this.onFileUpload}>
 					Upload
 				</button>
 					</div>
 
 				<br />
 				 <div id="errors">
-                {this.state.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
+                <p className="h4" id={`status`} style={{color:this.state.color}}>{this.state.response.status}</p>
+                {this.state.response.errors.map((error, i) => <p className="h6" key={i} id={`error-${i+1}`} style={{color:this.state.color}}>{error}</p>)}
             </div>
 				<p id="invalid" style={{color:"red"}}>{this.state.invalid}</p>
 				</section>
 			</div>
-			
 		);
 	}
 }

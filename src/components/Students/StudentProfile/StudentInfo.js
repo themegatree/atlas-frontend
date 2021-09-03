@@ -1,7 +1,7 @@
 import React, { Component} from "react"
 import { useParams } from "react-router-dom";
 
-const GetStudentInfo = (props) => {
+const GetStudentInfo = () => {
     return (<StudentInfo id={useParams().id}/>)
 }
 
@@ -11,30 +11,44 @@ class StudentInfo extends Component{
         this.state = {
             studentData: {
                 ModuleChallenges: []
-            }
+            },
+            showTextbox: false,
+            response: ""
         }
     }
 
-    async componentDidMount(){
-        await fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.props.id}`)
+    componentDidMount(){
+      fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.props.id}`)
         .then(res => res.json())
-        .then(data => this.setState({studentData: data.student}, () => {
-            console.log(this.state.studentData)
-        }))
-        await fetch(`https://api.github.com/users/${this.state.studentData.githubUsername}`)
-        .then(res => res.json())
-        .then(data =>  this.setState({avatar_Url: data.avatar_url}))
+        .then(apiData => {
+          fetch(`https://api.github.com/users/${apiData.student.githubUsername}`)
+            .then(res => res.json())
+            .then(githubData => this.setState({
+              studentData: apiData.student,
+              avatar_Url: githubData.avatar_url
+            }))
+        })
     }
 
-    render(){
+    mainPage = () => {
         return (
-            <div id="studentInfoDiv">
+            <section>
+                <p id='response'>{this.state.response}</p>
                 <img alt="Github Profile Not Found" id="githubImage" src={this.state.avatar_Url}></img>
-                <p id="id"><b>ID:</b> {this.props.id}</p>
-                <p id="firstName"><b>First Name:</b> {this.state.studentData.firstName}</p>
-                <p id="lastName"><b>Last Name:</b> {this.state.studentData.lastName}</p>
-                <p id="github"><b>Github Username:</b> {this.state.studentData.githubUsername}</p>
-                <p id="email"><b>Email:</b> {this.state.studentData.email}</p>
+                <br></br>
+                <p id="id">ID: {this.props.id}</p>
+                <br></br>
+                <p id="firstName">First Name: {this.state.studentData.firstName}</p>
+                <button id="firstNameUpdate" onClick={() => {this.showTextbox("First Name", "firstName")}}>Change First Name</button>
+                <br></br>
+                <p id="lastName">Last Name: {this.state.studentData.lastName}</p>
+                <button id="lastNameUpdate" onClick={() => {this.showTextbox("Last Name", "lastName")}}>Change Last Name</button>
+                <br></br>
+                <p id="github">Github Username: {this.state.studentData.githubUsername}</p>
+                <button id="githubUsernameUpdate" onClick={() => {this.showTextbox("Github Username", "githubUsername")}}>Change GitHub Username</button>
+                <br></br>
+                <p id="email">Email: {this.state.studentData.email}</p>
+                <button id="emailUpdate" onClick={() => {this.showTextbox("Email", "email")}}>Change Email</button>
 
                 <h3 id="challengesHeading">Challenges</h3>
 
@@ -85,8 +99,55 @@ class StudentInfo extends Component{
                         </div>
                     </div>
                 ))}
-            </div>
+            </section>
         )
+    }
+
+    submitField = async (e) => {
+        e.preventDefault()
+        this.setState({showTextbox: false})
+        const data = {}
+        data[this.state.columnName] = e.target.childNodes[1].value
+        const opts = {
+            method: 'PUT',
+            body: data
+        }
+        await fetch(`${process.env.REACT_APP_API_URL}/api/students/${this.props.id}`, opts
+        ).then(res => res.json())
+        .then(data => {
+            if (data.status === 'success'){
+                this.setState({studentData: data.student, response: 'Data Updated Successfully'})
+            }
+            else{
+                this.setState({response: data.errors})
+            }
+        })
+        .catch()
+    }
+
+    textbox = () => {
+        const currentValue = this.state.studentData[this.state.columnName]
+        return(
+            <section>
+                <form onSubmit={this.submitField}>
+                    <p>{this.state.displayName}: </p>
+                    <input id="updateInput" placeholder={currentValue}></input>
+                    <input type="submit" value="Update" id="update"></input>
+                </form>
+            </section>
+        )
+    }
+
+    showTextbox = (displayName, columnName) => {
+        this.setState({
+            showTextbox: true,
+            displayName: displayName,
+            columnName: columnName
+        });
+    }
+
+    render(){
+        return (this.state.showTextbox) ? this.textbox() : this.mainPage()
     }
 }
 
