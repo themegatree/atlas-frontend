@@ -1,0 +1,13 @@
+.studentContainer {
+    width: 50%;
+    margin: auto
+}
+
+.studentContainer a{
+    color: black;
+    text-decoration:none
+}
+
+.studentContainer:hover{
+    background: powderblue;
+}

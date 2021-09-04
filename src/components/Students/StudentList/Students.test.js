@@ -2,6 +2,14 @@ import { render, screen } from '@testing-library/react';
 import Students from './Students';
 import data from './__mocks__/student-data.js'
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    studentId: 'student-id1',
+  }),
+  useRouteMatch: () => ({ url: '/student/studentID' }),
+}));
+
 beforeEach(() => {
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data) }))
 })

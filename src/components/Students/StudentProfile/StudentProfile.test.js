@@ -1,6 +1,6 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import {StudentInfo} from './StudentInfo.js'
+import StudentProfile from './StudentProfile.js'
 import data from './__mocks__/student-info-data.js'
 import updatedData from './__mocks__/student-info-data-update.js'
 import failData from './__mocks__/student-info-fail.js'
@@ -8,14 +8,11 @@ import failData from './__mocks__/student-info-fail.js'
 beforeEach(() => {
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(data)}))
   render(
-    <StudentInfo />
+    <StudentProfile />
   )   
 }); 
   
 test('Displays Student Info', async () => {
-  /*render(
-    <StudentInfo />
-  )*/
 
   const imageElement = screen.getByRole('img')
   expect(imageElement).toHaveAttribute('alt', 'Github Profile Not Found')
@@ -53,10 +50,10 @@ test('Displays Student Info', async () => {
 });
 
 test('Update Student Info' , async () => {
-  /*render(
-      <StudentInfo />
-  )*/
-
+  render(
+    <StudentProfile />
+  )
+  
   const firstNameSubmitButton = await screen.findByText(/Change First Name/i)
   userEvent.click(firstNameSubmitButton)
 
@@ -85,9 +82,9 @@ test('Update Student Info' , async () => {
 });
 
 test('Fail to update student info', async () => {
-  /*render(
-    <StudentInfo />
-  )*/
+  render(
+    <StudentProfile/>
+  )
 
   const firstNameSubmitButton = await screen.findByText(/Change First Name/i)
   userEvent.click(firstNameSubmitButton)
