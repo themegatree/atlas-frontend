@@ -69,7 +69,8 @@ class StudentProfile extends Component{
                     </div>
                 </div>
 
-                {this.state.studentData.ModuleChallenges.map((challenge, index) => (
+                {!(this.state.studentData.ModuleChallenges === undefined) &&
+                this.state.studentData.ModuleChallenges.map((challenge, index) => (
                     <div className="grid-container">
                         <div className="grid-item">
                             <p id={`challengeName-${index}`}>{challenge.challengeName}</p>
@@ -94,7 +95,7 @@ class StudentProfile extends Component{
                             }
                         </div>
                     </div>
-                ))}
+                    ))}
             </section>
         )
     }
@@ -146,6 +147,5 @@ class StudentProfile extends Component{
         return (this.state.showTextbox) ? this.textbox() : this.mainPage()
     }
 }
-
 
 export default StudentProfile

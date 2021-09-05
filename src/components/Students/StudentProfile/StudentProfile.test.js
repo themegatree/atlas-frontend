@@ -53,9 +53,9 @@ test('Update Student Info' , async () => {
   render(
     <StudentProfile />
   )
-  
-  const firstNameSubmitButton = await screen.findByText(/Change First Name/i)
-  userEvent.click(firstNameSubmitButton)
+
+  const firstNameSubmitButton = await screen.findAllByText(/Change First Name/i, {exact: true})
+  userEvent.click(firstNameSubmitButton[1])
 
   const firstNameInput = await screen.findByPlaceholderText(/Mike/i)
   userEvent.type(firstNameInput,'Jack')
@@ -65,17 +65,17 @@ test('Update Student Info' , async () => {
   const submitButton = await screen.findByText(/Update/i)
   userEvent.click(submitButton)
 
-  const lastNameElement = await screen.findByText(/Testerson/i);
-  expect(lastNameElement).toBeInTheDocument();
+  const lastNameElement = await screen.findAllByText(/Testerson/i);
+  expect(lastNameElement[1]).toBeInTheDocument();
 
-  const emailElement = await screen.findByText(/real@email.com/i);
-  expect(emailElement).toBeInTheDocument();
+  const emailElement = await screen.findAllByText(/real@email.com/i);
+  expect(emailElement[1]).toBeInTheDocument();
 
   const firstNameElement = await screen.findByText(/Jack/i);
   expect(firstNameElement).toBeInTheDocument();
 
-  const githubElement = await screen.findByText(/testname/i);
-  expect(githubElement).toBeInTheDocument();
+  const githubElement = await screen.findAllByText(/testname/i);
+  expect(githubElement[1]).toBeInTheDocument();
 
   const checkElement = await screen.findByText(/Data Updated Successfully/i);
   expect(checkElement).toBeInTheDocument();
@@ -86,8 +86,8 @@ test('Fail to update student info', async () => {
     <StudentProfile/>
   )
 
-  const firstNameSubmitButton = await screen.findByText(/Change First Name/i)
-  userEvent.click(firstNameSubmitButton)
+  const firstNameSubmitButton = await screen.findAllByText(/Change First Name/i, {exact: true})
+  userEvent.click(firstNameSubmitButton[1])
   
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(failData)}))
 
@@ -99,17 +99,17 @@ test('Fail to update student info', async () => {
 
   global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(updatedData)}))
 
-  const lastNameElement = await screen.findByText(/Testerson/i);
-  expect(lastNameElement).toBeInTheDocument();
+  const lastNameElement = await screen.findAllByText(/Testerson/i);
+  expect(lastNameElement[1]).toBeInTheDocument();
 
-  const emailElement = await screen.findByText(/real@email.com/i);
-  expect(emailElement).toBeInTheDocument();
+  const emailElement = await screen.findAllByText(/real@email.com/i);
+  expect(emailElement[1]).toBeInTheDocument();
 
-  const firstNameElement = await screen.findByText(/Mike/i);
-  expect(firstNameElement).toBeInTheDocument();
+  const firstNameElement = await screen.findAllByText(/Mike/i);
+  expect(firstNameElement[1]).toBeInTheDocument();
 
-  const githubElement = await screen.findByText(/testname/i);
-  expect(githubElement).toBeInTheDocument();
+  const githubElement = await screen.findAllByText(/testname/i);
+  expect(githubElement[1]).toBeInTheDocument();
 
   const checkElement = await screen.findByText(/Invalid params/i);
   expect(checkElement).toBeInTheDocument();
